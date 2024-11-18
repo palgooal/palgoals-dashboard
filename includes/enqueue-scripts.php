@@ -1,22 +1,28 @@
 <?php
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly
+}
+
 // تحميل ملفات الـ CSS والـ JavaScript المشتركة
 function palgoals_enqueue_shared_assets() {
+    $plugin_url = plugins_url('assets/', __DIR__);
+    
     // تحميل ملفات CSS
-    wp_enqueue_style('palgoals-inter', plugin_dir_url(__DIR__) . 'assets/fonts/inter/inter.css');
-    wp_enqueue_style('palgoals-duotone-style', plugin_dir_url(__DIR__) . 'assets/fonts/phosphor/duotone/style.css');
-    wp_enqueue_style('palgoals-tabler-icons.min', plugin_dir_url(__DIR__) . 'assets/fonts/tabler-icons.min.css');
-    wp_enqueue_style('palgoals-feather', plugin_dir_url(__DIR__) . 'assets/fonts/feather.css');
-    wp_enqueue_style('palgoals-fontawesome', plugin_dir_url(__DIR__) . 'assets/fonts/fontawesome.css');
-    wp_enqueue_style('palgoals-material', plugin_dir_url(__DIR__) . 'assets/fonts/material.css');
-    wp_enqueue_style('eeedashboard-style', plugin_dir_url(__DIR__) . 'assets/css/style.css');
-    //wp_enqueue_style('palgoals-tailwind', plugin_dir_url(__DIR__) . 'dist/output.css');
+    wp_enqueue_style('palgoals-inter', $plugin_url . 'fonts/inter/inter.css', [], null);
+    wp_enqueue_style('palgoals-duotone-style', $plugin_url . 'fonts/phosphor/duotone/style.css', [], null);
+    wp_enqueue_style('palgoals-tabler-icons', $plugin_url . 'fonts/tabler-icons.min.css', [], null);
+    wp_enqueue_style('palgoals-feather', $plugin_url . 'fonts/feather.css', [], null);
+    wp_enqueue_style('palgoals-fontawesome', $plugin_url . 'fonts/fontawesome.css', [], null);
+    wp_enqueue_style('palgoals-material', $plugin_url . 'fonts/material.css', [], null);
+    wp_enqueue_style('palgoals-dashboard-style', $plugin_url . 'css/style.css', [], null);
+    //wp_enqueue_style('palgoals-tailwind', $plugin_url . 'dist/output.css', [], null);
 
     // تحميل ملفات JavaScript
-    wp_enqueue_script('palgoals-simplebar', plugin_dir_url(__DIR__) . 'assets/js/plugins/simplebar.min.js', array('jquery'), null, true);
-    wp_enqueue_script('palgoals-popper', plugin_dir_url(__DIR__) . 'assets/js/plugins/popper.min.js', array('jquery'), null, true);
-    wp_enqueue_script('palgoals-custom-icon', plugin_dir_url(__DIR__) . 'assets/js/icon/custom-icon.js', array('jquery'), null, true);
-    wp_enqueue_script('palgoals-feather', plugin_dir_url(__DIR__) . 'assets/js/plugins/feather.min.js', array('jquery'), null, true);
-    wp_enqueue_script('palgoals-component', plugin_dir_url(__DIR__) . 'assets/js/component.js', array('jquery'), null, true);
-    wp_enqueue_script('palgoals-themejs', plugin_dir_url(__DIR__) . 'assets/js/theme.js', array('jquery'), null, true);
-    wp_enqueue_script('palgoals-pages-script-js', plugin_dir_url(__DIR__) . 'assets/js/script.js', array('jquery'), null, true);
+    wp_enqueue_script('palgoals-simplebar', $plugin_url . 'js/plugins/simplebar.min.js', ['jquery'], null, true);
+    wp_enqueue_script('palgoals-popper', $plugin_url . 'js/plugins/popper.min.js', ['jquery'], null, true);
+    wp_enqueue_script('palgoals-custom-icon', $plugin_url . 'js/icon/custom-icon.js', ['jquery'], null, true);
+    wp_enqueue_script('palgoals-feather', $plugin_url . 'js/plugins/feather.min.js', ['jquery'], null, true);
+    wp_enqueue_script('palgoals-component', $plugin_url . 'js/component.js', ['jquery'], null, true);
+    wp_enqueue_script('palgoals-themejs', $plugin_url . 'js/theme.js', ['jquery'], null, true);
+    wp_enqueue_script('palgoals-script', $plugin_url . 'js/script.js', ['jquery'], null, true);
 }

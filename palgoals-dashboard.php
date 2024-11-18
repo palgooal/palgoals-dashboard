@@ -19,7 +19,7 @@ function palgoals_load_textdomain() {
     load_plugin_textdomain('palgoals-dash', false, dirname(plugin_basename(__FILE__)) . '/languages');
 }
 add_action('plugins_loaded', 'palgoals_load_textdomain');
-require_once plugin_dir_path(__FILE__) . 'includes/login-dashboard.php';
+require_once plugin_dir_path(__FILE__) . 'includes/admin/login-dashboard.php';
 require_once plugin_dir_path(__FILE__) . 'includes/index-dashboard.php';
 require_once plugin_dir_path(__FILE__) . 'includes/pages-dashboard.php';
 //require_once plugin_dir_path(__FILE__) . 'includes/blog.php';
