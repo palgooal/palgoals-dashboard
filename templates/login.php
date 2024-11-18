@@ -1,16 +1,29 @@
-<?php wp_head();?>
+<?php
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly
+}
+
+// إعادة التوجيه إذا كان المستخدم مسجل الدخول
+if (is_user_logged_in()) {
+    wp_safe_redirect(site_url('/dashboard/'));
+    exit;
+}
+
+wp_head();
+?>
+
 <div class="loader-bg fixed inset-0 bg-white dark:bg-themedark-cardbg z-[1034]">
     <div class="loader-track h-[5px] w-full inline-block absolute overflow-hidden top-0">
-        <div class="loader-fill w-[300px] h-[5px] bg-primary-500 absolute top-0 left-0 transition-[transform_0.2s_linear] origin-left animate-[2.1s_cubic-bezier(0.65,0.815,0.735,0.395)_0s_infinite_normal_none_running_loader-animate]"></div>
+        <div class="loader-fill w-[300px] h-[5px] bg-primary-500 absolute top-0 left-0 animate-[loader-animate]"></div>
     </div>
 </div>
-<!-- [ Pre-loader ] End -->
+
 <div class="auth-main relative">
     <div class="auth-wrapper v2 flex items-center w-full h-full min-h-screen">
         
         <!-- جانب الصورة -->
         <div class="auth-sidecontent">
-            <img src="<?php echo plugin_dir_url(__DIR__) . 'assets/images/authentication/img-auth-sideimg.jpg'; ?>" alt="images" class="img-fluid h-screen hidden lg:block" />
+            <img src="<?php echo esc_url(plugin_dir_url(__DIR__) . 'assets/images/authentication/img-auth-sideimg.jpg'); ?>" alt="images" class="img-fluid h-screen hidden lg:block" />
         </div>
         
         <!-- نموذج تسجيل الدخول -->
@@ -20,7 +33,7 @@
                     
                     <!-- الشعار -->
                     <div class="text-center">
-                        <a href="#"><img src="<?php echo plugin_dir_url(__DIR__) . 'assets/images/palgoalsnew.webp'; ?>" alt="logo" class="mx-auto"/></a>
+                        <a href="#"><img src="<?php echo esc_url(plugin_dir_url(__DIR__) . 'assets/images/palgoalsnew.webp'); ?>" alt="logo" class="mx-auto" /></a>
                     </div>
                     
                     <!-- خط فاصل -->
@@ -31,23 +44,26 @@
                     </div>
                     
                     <!-- عنوان تسجيل الدخول -->
-                    <h4 class="text-center font-medium mb-4"><?php _e('Login with your email', 'palgoals-dash');?></h4>
+                    <h4 class="text-center font-medium mb-4"><?php _e('Login with your email', 'palgoals-dash'); ?></h4>
                     
                     <!-- نموذج تسجيل الدخول -->
                     <form id="login-form">
+                        <!-- Nonce للحماية -->
+                        <input type="hidden" id="login_nonce" value="<?php echo wp_create_nonce('custom_login_nonce'); ?>">
+                        
                         <!-- حقل البريد الإلكتروني -->
                         <div class="mb-3">
-                            <input type="email" class="form-control" id="email" placeholder="<?php _e('Email Address', 'palgoals-dash');?>" required />
+                            <input type="email" class="form-control" id="email" placeholder="<?php _e('Email Address', 'palgoals-dash'); ?>" required />
                         </div>
                         
                         <!-- حقل كلمة المرور -->
                         <div class="mb-3">
-                            <input type="password" class="form-control" id="password" placeholder="<?php _e('Password', 'palgoals-dash');?>" required />
+                            <input type="password" class="form-control" id="password" placeholder="<?php _e('Password', 'palgoals-dash'); ?>" required />
                         </div>
                         
                         <!-- زر تسجيل الدخول -->
                         <div class="text-center">
-                            <button type="submit" class="btn btn-primary w-full"><?php _e('Login', 'palgoals-dash');?></button>
+                            <button type="submit" class="btn btn-primary w-full"><?php _e('Login', 'palgoals-dash'); ?></button>
                         </div>
                         
                         <!-- رسالة الخطأ -->
@@ -62,4 +78,5 @@
         
     </div>
 </div>
-<?php wp_footer();?>
+
+<?php wp_footer(); ?>
