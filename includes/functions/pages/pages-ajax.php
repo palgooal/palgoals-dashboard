@@ -1,68 +1,5 @@
 <?php
-// إضافة قاعدة إعادة الكتابة لإنشاء رابط مخصص لـ dashboard/pg-pages
-function palgoals_pages_dashboard_rewrite_rule() {
-    add_rewrite_rule('^dashboard/pg-pages/?$', 'index.php?pg_pages=true', 'top');
-}
-add_action('init', 'palgoals_pages_dashboard_rewrite_rule');
-
-// إضافة المتغير المخصص إلى query_vars
-function palgoals_add_pages_query_vars($vars) {
-    $vars[] = 'pg_pages';
-    return $vars;
-}
-add_filter('query_vars', 'palgoals_add_pages_query_vars');
-
-// توجيه الصفحة إلى قالب مخصص عند التحقق من المتغير
-function palgoals_pages_dashboard_page() {
-    if (get_query_var('pg_pages') === 'true') {
-        // التحقق من تسجيل دخول المستخدم
-        if (is_user_logged_in()) {
-            include plugin_dir_path(__DIR__) . 'templates/pg-pages.php';
-            } else {
-                // إعادة توجيه المستخدم إلى صفحة تسجيل الدخول
-                wp_redirect(wp_login_url());
-                exit;
-            }
-            exit;
-        }
-    }
-add_action('template_redirect', 'palgoals_pages_dashboard_page');
-
-// تحميل ملفات الـ CSS والـ JavaScript للوحة التحكم المخصصة
-function palgoals_enqueue_pages_dashboard_assets() {
-    if (get_query_var('pg_pages') === 'true') {
-        wp_enqueue_script('palgoals-sadd-pages', plugin_dir_url(__DIR__) . 'assets/js/pg-pages/add-pages.js', array('jquery'), null, true);
-        palgoals_enqueue_shared_assets();
-        wp_enqueue_script('palgoals-delete-pages', plugin_dir_url(__DIR__) . 'assets/js/pg-pages/delete-pages.js', array('jquery'), null, true);
-        //wp_enqueue_script('palgoals-status-pages', plugin_dir_url(__DIR__) . 'assets/js/pg-pages/status.js', array('jquery'), null, true);
-        
-        // Localize the script to pass data
-        wp_localize_script('palgoals-delete-pages', 'palgoals_delete_pages_object', array(
-            'ajaxurl' => admin_url('admin-ajax.php'),
-            'nonce' => wp_create_nonce('palgoals_delete_page_nonce')
-        ));
-        wp_localize_script('palgoals-sadd-pages', 'palgoals_sadd_pages_object', array(
-            'ajaxurl' => admin_url('admin-ajax.php'),
-            'nonce' => wp_create_nonce('palgoals_nonce')
-        ));
-        
-        
-    }
-}
-add_action('wp_enqueue_scripts', 'palgoals_enqueue_pages_dashboard_assets');
-
-// تعطيل ملفات CSS الخاصة بالثيم في صفحة لوحة التحكم المخصصة
-function palgoals_remove_theme_styles() {
-    if (get_query_var('pg_pages') === 'true') {
-        global $wp_styles;
-        foreach ($wp_styles->queue as $handle) {
-            if (strpos($wp_styles->registered[$handle]->src, get_template_directory_uri()) === 0) {
-                wp_dequeue_style($handle);
-            }
-        }
-    }
-}
-add_action('wp_enqueue_scripts', 'palgoals_remove_theme_styles', 99);
+if (!defined('ABSPATH')) exit; // منع الوصول المباشر
 
 // تنفيذ حذف الصفحة بواسطة AJAX
 function palgoals_delete_page() {
@@ -214,7 +151,3 @@ function palgoals_add_ajaxurl_to_head() {
     </script>';
 }
 add_action('wp_head', 'palgoals_add_ajaxurl_to_head');
-
-
-
-?>
