@@ -1,5 +1,12 @@
-<?php include plugin_dir_path(__DIR__). 'templates/header.php';?>
-<?php 
+<?php
+// تأكد من منع الوصول المباشر
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly
+}
+
+// تضمين الهيدر
+include plugin_dir_path(__DIR__) . 'templates/partials/header.php';
+
 // إنشاء استعلام لجلب جميع الصفحات
 $paged = (get_query_var('paged')) ? absint(get_query_var('paged')) : 1;
 $args = array(
@@ -126,4 +133,4 @@ $query = new WP_Query($args);
     <!-- [ Main Content ] end -->
 <?php include plugin_dir_path(__DIR__). 'templates/modal/modal-add-pages.php';?>    
 <input type="hidden" id="elementor-edit-link" value=""/>
-<?php include plugin_dir_path(__DIR__). 'templates/footer.php';?>
+<?php include plugin_dir_path(__DIR__). 'templates/partials/footer.php';?>

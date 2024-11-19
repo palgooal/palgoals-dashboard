@@ -1,6 +1,11 @@
 <?php
+// تأكد من منع الوصول المباشر
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly
+}
+
 // تضمين الهيدر
-include plugin_dir_path(__DIR__) . 'header.php';
+include plugin_dir_path(__DIR__) . '/partials/header.php';
 
 // جلب جميع التصنيفات
 $categories = get_terms([
@@ -75,7 +80,4 @@ $categories = get_terms([
 </a>
 
 
-<?php
-// تضمين الفوتر
-include plugin_dir_path(__DIR__) . 'footer.php';
-?>
+<?php include plugin_dir_path(__DIR__). '/partials/footer.php';?>

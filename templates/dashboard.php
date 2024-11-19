@@ -1,4 +1,12 @@
-<?php include plugin_dir_path(__DIR__). 'templates/header.php';?>
+<?php
+// تأكد من منع الوصول المباشر
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly
+}
+
+// تضمين الهيدر
+include plugin_dir_path(__DIR__) . 'templates/partials/header.php';
+?>
     <!-- [ Main Content ] start -->
     <div class="pc-container">
       <div class="pc-content">
@@ -992,4 +1000,4 @@
       </div>
     </div>
     <!-- [ Main Content ] end -->
-<?php include plugin_dir_path(__DIR__). 'templates/footer.php';?>
+<?php include plugin_dir_path(__DIR__). 'templates/partials/footer.php';?>

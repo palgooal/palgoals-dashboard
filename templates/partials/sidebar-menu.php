@@ -1,12 +1,12 @@
-<?php 
-    // جلب معلومات المستخدم الحالي
+<?php
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly
+}
+
+// Fetch current user information
 $current_user = wp_get_current_user();
-// جلب اسم المستخدم
 $user_name = $current_user->display_name;
 $user_email = $current_user->user_email;
-// جلب الأفاتار (الصورة الرمزية) مع حجم مخصص (مثل 64px)
-$avatar = get_avatar($current_user->ID, 64);
-// جلب رابط الأفاتار (الصورة الرمزية) مع حجم مخصص (مثل 45px)
 $avatar_url = get_avatar_url($current_user->ID, ['size' => 45]);
 ?>
 
@@ -22,7 +22,7 @@ $avatar_url = get_avatar_url($current_user->ID, ['size' => 45]);
   <div class="navbar-wrapper">
     <div class="m-header flex items-center py-4 px-6 h-header-height">
       <a href="<?php echo get_home_url().'/dashboard'; ?>" class="b-brand flex items-center gap-3">
-        <img src="<?php echo plugin_dir_url(__DIR__) . 'assets/images/palgoalsnew.webp'; ?>" class="img-fluid logo-lg" alt="logo" />
+        <img src="<?php echo plugin_dir_url(__FILE__) . '../../assets/images/palgoalsnew.webp'; ?>" class="img-fluid logo-lg w-[150px]" alt="logo"  />
         <span class="badge bg-success-500/10 text-success-500 rounded-full theme-version">v1.0.0</span>
       </a>
     </div>
@@ -45,28 +45,9 @@ $avatar_url = get_avatar_url($current_user->ID, ['size' => 45]);
               }
               ?>
            </div>
-            <a class="shrink-0 btn btn-icon inline-flex btn-link-secondary" data-pc-toggle="collapse" href="#pc_sidebar_userlink">
-              <svg class="pc-icon w-[22px] h-[22px]">
-                <use xlink:href="#custom-sort-outline"></use>
-              </svg>
-            </a>
+
           </div>
-          <div class="hidden pc-user-links" id="pc_sidebar_userlink">
-            <div class="pt-3 *:flex *:items-center *:py-2 *:gap-2.5 hover:*:text-primary-500">
-              <a href="#!">
-                <i class="text-lg leading-none ti ti-user"></i>
-                <span>My Account</span>
-              </a>
-              <a href="#!">
-                <i class="text-lg leading-none ti ti-settings"></i>
-                <span>Settings</span>
-              </a>
-              <a href="<?php echo wp_logout_url(home_url()); ?>">
-                <i class="text-lg leading-none ti ti-power"></i>
-                <span>Logout</span>
-              </a>
-            </div>
-          </div>
+
         </div>
       </div>
       <ul class="pc-navbar">

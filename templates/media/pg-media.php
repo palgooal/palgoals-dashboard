@@ -1,4 +1,12 @@
-<?php include plugin_dir_path(__DIR__) . 'header.php'; ?>
+<?php
+// تأكد من منع الوصول المباشر
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly
+}
+
+// تضمين الهيدر
+include plugin_dir_path(__DIR__) . '/partials/header.php';
+?>
 
 <div class="pc-container">
     <div class="pc-content">
@@ -99,7 +107,7 @@
 </div>
 
 
-<?php include plugin_dir_path(__DIR__) . 'footer.php'; ?>
+<?php include plugin_dir_path(__DIR__). '/partials/footer.php';?>
 
 <style>
 a.edit-attachment {

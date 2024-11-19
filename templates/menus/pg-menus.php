@@ -1,6 +1,11 @@
 <?php
+// تأكد من منع الوصول المباشر
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly
+}
+
 // تضمين الهيدر
-include plugin_dir_path(__DIR__) . 'header.php';
+include plugin_dir_path(__DIR__) . '/partials/header.php';
 
 // التحقق من الصفحة الحالية
 $paged = get_query_var('paged') ? absint(get_query_var('paged')) : 1;
@@ -165,7 +170,4 @@ $query = new WP_Query($args);
 </div>
 <!-- [ Main Content ] -->
 
-<?php
-// تضمين الفوتر
-include plugin_dir_path(__DIR__) . 'footer.php';
-?>
+<?php include plugin_dir_path(__DIR__). '/partials/footer.php';?>

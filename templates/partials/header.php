@@ -1,3 +1,8 @@
+<?php
+if (!defined('ABSPATH')) {
+    exit; // Exit if accessed directly
+}
+?>
 <!doctype html>
 <html lang="<?php echo get_locale(); ?>" dir="<?php echo ( is_rtl() ) ? 'rtl' : 'ltr'; ?>" class="preset-1" data-pc-sidebar-caption="true" data-pc-layout="vertical" data-pc-direction="<?php echo ( is_rtl() ) ? 'rtl' : 'ltr'; ?>" data-pc-theme_contrast="" data-pc-theme="light">
 <!-- [Head] start -->
@@ -18,7 +23,7 @@
   />
   <meta name="author" content="Phoenixcoded" />
 <!-- [Favicon] icon -->
-<link rel="icon" href="<?php echo plugin_dir_url(__DIR__). 'assets/images/favicon.svg';?>" type="image/x-icon" />
+<link rel="icon" href="<?php echo plugin_dir_url(__FILE__). '../assets/images/favicon.svg';?>" type="image/x-icon" />
 <!-- [Template CSS Files] -->
 <?php wp_head(); ?>
 </head>
@@ -26,8 +31,7 @@
 <!-- [Body] Start -->
 
 <body <?php body_class(); ?>>
-<?php include plugin_dir_path(__DIR__). 'templates/partials/sidebar-menu.php';?>
-<?php
-
+<?php 
+include plugin_dir_path(__DIR__) . '/partials/sidebar-menu.php';
 ?>
 
