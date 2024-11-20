@@ -35,6 +35,9 @@ $categories = get_terms([
                     <div class="card-header">
                         <div class="sm:flex items-center justify-between">
                             <h5 class="mb-3 sm:mb-0"><?php esc_html_e('All Categories', 'palgoals-dash'); ?></h5>
+                            <button class="btn btn-primary mt-1 mx-1" type="button" data-pc-toggle="offcanvas" data-pc-target="#offcanvasExample" aria-controls="offcanvasExample">
+                                <?php esc_html_e('Add Categories', 'palgoals-dash'); ?>
+                            </button>
                         </div>
                     </div>
                     <!-- Card Body -->
@@ -79,5 +82,5 @@ $categories = get_terms([
     <?php esc_html_e('Manage Categories', 'palgoals-dash'); ?>
 </a>
 
-
 <?php include plugin_dir_path(__DIR__). '/partials/footer.php';?>
+<?php include plugin_dir_path(__DIR__). '/modal/modal-menu/add-categories.php';?>
