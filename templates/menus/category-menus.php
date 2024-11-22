@@ -45,7 +45,6 @@ $categories = get_terms([
                             <table class="table table-hover" id="pc-dt-simple">
                                 <thead>
                                     <tr>
-                                        <th><input type="checkbox" id="select_all"></th>
                                         <th><?php esc_html_e('Image', 'palgoals-dash'); ?></th>
                                         <th><?php esc_html_e('Name', 'palgoals-dash'); ?></th>
                                         <th><?php esc_html_e('Description', 'palgoals-dash'); ?></th>
@@ -60,10 +59,6 @@ $categories = get_terms([
                                         $image_url = $image_id ? wp_get_attachment_url($image_id) : 'https://via.placeholder.com/150';
                                     ?>
                                     <tr>
-                                        <!-- Checkbox -->
-                                        <td>
-                                            <input type="checkbox" name="page_ids[]" value="<?php echo esc_attr($category->term_id); ?>" class="select_single">
-                                        </td>
                                         <!-- Image -->
                                         <td><img src="<?php echo esc_url($image_url); ?>" alt="<?php echo esc_attr($category->name); ?>" class="w-16 h-16"></td>
                                         <!-- Name -->
@@ -74,13 +69,13 @@ $categories = get_terms([
                                         <td><?php echo esc_html($category->count); ?></td>
                                         <!-- Actions -->
                                         <td>
-                                            <a href="#" target="_blank" class="btn-link-secondary">
+                                            <a href="<?php echo esc_url(get_term_link($category->term_id, 'pg_food_menu_category')); ?>" target="_blank" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
                                                 <i class="ti ti-eye"></i>
                                             </a>
-                                            <a href="#" class="btn-link-secondary">
+                                            <a class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary" type="button" data-pc-toggle="offcanvas" data-pc-target="#editcategories" aria-controls="editcategories">
                                                 <i class="ti ti-edit"></i>
                                             </a>
-                                            <a href="#" class="btn-link-secondary delete-category" data-category-id="<?php echo esc_attr($category->term_id); ?>">
+                                            <a href="#" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary delete-category" data-category-id="<?php echo esc_attr($category->term_id); ?>">
                                                 <i class="ti ti-trash"></i>
                                             </a>
                                         </td>
@@ -102,37 +97,4 @@ $categories = get_terms([
 </div>
 
 <?php include plugin_dir_path(__DIR__). '/partials/footer.php'; ?>
-<?php include plugin_dir_path(__DIR__). '/modal/modal-menu/add-categories.php'; ?>
-
-<?php
-// حذف التصنيف عبر Ajax
-add_action('wp_ajax_delete_food_menu_category', 'delete_food_menu_category');
-function delete_food_menu_category() {
-    // تحقق من الـ Nonce
-    check_ajax_referer('delete_category_nonce', 'nonce');
-
-    // التحقق من صلاحيات المستخدم
-    if (!current_user_can('manage_categories')) {
-        wp_send_json_error(['error' => __('You do not have permission to delete categories.', 'palgoals-dash')]);
-    }
-
-    // تحقق من وجود معرف التصنيف
-    if (!isset($_POST['category_id']) || empty($_POST['category_id'])) {
-        wp_send_json_error(['error' => __('Invalid category ID.', 'palgoals-dash')]);
-    }
-
-    $category_id = intval($_POST['category_id']);
-
-    // حاول حذف التصنيف
-    $deleted = wp_delete_term($category_id, 'pg_food_menu_category');
-
-    if (is_wp_error($deleted)) {
-        wp_send_json_error(['error' => $deleted->get_error_message()]);
-    }
-
-    // نجاح الحذف
-    wp_send_json_success(['message' => __('Category deleted successfully.', 'palgoals-dash')]);
-}
-
-
-?>
+<?php include plugin_dir_path(__DIR__). 'modal/modal-menu/add-categories.php'; ?>

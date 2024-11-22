@@ -12,7 +12,7 @@ function palgoals_enqueue_category_dashboard_assets() {
 
         // سكربت إدارة الصور
         wp_enqueue_script(
-            'palgoals-category-image',
+            'palgoals-ajax-script',
             plugin_dir_url(dirname(__DIR__, 3)) . 'assets/js/pg-pages/category-image.js',
             array('jquery'),
             null,
@@ -34,6 +34,11 @@ function palgoals_enqueue_category_dashboard_assets() {
             'nonce' => wp_create_nonce('delete_category_nonce'),
             'confirmMessage' => __('Are you sure you want to delete this category?', 'palgoals-dash'),
             'errorMessage' => __('An error occurred. Please try again.', 'palgoals-dash')
+        ]);
+
+        wp_localize_script('palgoals-ajax-script', 'palgoals_dashboard', [
+            'ajaxurl' => admin_url('admin-ajax.php'),
+            'nonce' => wp_create_nonce('add_category_nonce'),
         ]);
     }
 }

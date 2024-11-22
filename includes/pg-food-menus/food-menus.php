@@ -13,3 +13,4 @@ include_once plugin_dir_path(__DIR__) . 'pg-food-menus/functions-food-menus/ajax
 include_once plugin_dir_path(__DIR__) . 'pg-food-menus/functions-food-menus/taxonomies/taxonomies-food-rewrite.php';
 include_once plugin_dir_path(__DIR__) . 'pg-food-menus/functions-food-menus/taxonomies/taxonomies-food-assets.php';
 include_once plugin_dir_path(__DIR__) . 'pg-food-menus/functions-food-menus/taxonomies/taxonomies-food-menu-category.php';
+include_once plugin_dir_path(__DIR__) . 'pg-food-menus/functions-food-menus/taxonomies/taxonomies-ajax-food-menu-category.php';

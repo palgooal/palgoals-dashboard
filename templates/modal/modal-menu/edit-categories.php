@@ -1,7 +1,7 @@
-<div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
+<div class="offcanvas offcanvas-start" tabindex="-1" id="editcategories" aria-labelledby="editcategoriesLabel">
     <div class="offcanvas-header">
         <h5 class="offcanvas-title"><?php esc_html_e('Add New Category', 'palgoals-dash'); ?></h5>
-        <button data-pc-dismiss="#offcanvasExample" class="text-lg flex items-center justify-center rounded w-7 h-7 text-secondary-500 hover:bg-danger-500/10 hover:text-danger-500">
+        <button data-pc-dismiss="#editcategories" class="text-lg flex items-center justify-center rounded w-7 h-7 text-secondary-500 hover:bg-danger-500/10 hover:text-danger-500">
             <i class="ti ti-x"></i>
         </button>
     </div>
