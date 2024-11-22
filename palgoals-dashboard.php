@@ -22,8 +22,8 @@ add_action('plugins_loaded', 'palgoals_load_textdomain');
 require_once plugin_dir_path(__FILE__) . 'includes/admin/login-dashboard.php';
 require_once plugin_dir_path(__FILE__) . 'includes/admin/dashboard.php';
 require_once plugin_dir_path(__FILE__) . 'includes/admin/pages-dashboard.php';
-require_once plugin_dir_path(__FILE__) . 'includes/pg-food-menus/menus-dashboard.php';
-require_once plugin_dir_path(__FILE__) . 'includes/pg-food-menus/category-menus-dashboard.php';
+require_once plugin_dir_path(__FILE__) . 'includes/pg-food-menus/food-menus.php';
+//require_once plugin_dir_path(__FILE__) . 'includes/pg-food-menus/category-menus-dashboard.php';
 require_once plugin_dir_path(__FILE__) . 'includes/media.php';
 require_once plugin_dir_path(__FILE__) . 'includes/enqueue-scripts.php';
 
