@@ -7,6 +7,13 @@ function palgoals_enqueue_menus_dashboard_assets() {
         palgoals_enqueue_shared_assets();
         wp_enqueue_media();
         wp_enqueue_script('palgoals-category-image', plugin_dir_url(dirname(__DIR__, 2)) . 'assets/js/pg-pages/category-image.js', array('jquery'), null, true);
+        wp_enqueue_script('palgoals-ajax-script', plugin_dir_url(__DIR__) . 'functions-food-menus/js/add-food-ajax.js', array('jquery'), null, true);
+        wp_enqueue_script('palgoals-upload-image', plugin_dir_url(__DIR__) . 'functions-food-menus/js/upload-image.js', array('jquery'), null, true);
+
+        wp_localize_script('palgoals-ajax-script', 'ajax_object', array(
+            'ajax_url' => admin_url('admin-ajax.php'),
+            'nonce'    => wp_create_nonce('food_ajax_nonce'),
+        ));
     }
 }
 add_action('wp_enqueue_scripts', 'palgoals_enqueue_menus_dashboard_assets');

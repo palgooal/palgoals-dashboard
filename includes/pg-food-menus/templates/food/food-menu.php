@@ -5,7 +5,8 @@ if (!defined('ABSPATH')) {
 }
 
 // تضمين الهيدر
-include plugin_dir_path(__DIR__) . '/partials/header.php';
+include plugin_dir_path(dirname(__DIR__, 3)) . 'templates/partials/header.php';
+
 
 // التحقق من الصفحة الحالية
 $paged = get_query_var('paged') ? absint(get_query_var('paged')) : 1;
@@ -33,7 +34,6 @@ $query = new WP_Query($args);
             </div>
         </div>
         <!-- [ breadcrumb ] -->
-
         <!-- [ Main Content Section ] -->
         <div class="grid grid-cols-12 gap-x-6">
             <div class="col-span-12">
@@ -41,10 +41,12 @@ $query = new WP_Query($args);
                     <!-- Card Header -->
                     <div class="card-header">
                         <div class="sm:flex items-center justify-between">
-                            <h5 class="mb-3 sm:mb-0"><?php esc_html_e('All Food Menu', 'palgoals-dash'); ?></h5>
-                            <button class="btn btn-primary" data-pc-animate="side-fall" data-pc-toggle="modal" data-pc-target="#animateModal">
-                                <?php esc_html_e('Add Food Menu', 'palgoals-dash'); ?>
-                            </button>
+                            <h5 class="mb-3 sm:mb-0"><?php esc_html_e('All Food', 'palgoals-dash'); ?></h5>
+                            <div>
+            <button data-pc-animate="side-fall" type="button" class="btn btn-primary" data-pc-toggle="modal" data-pc-target="#animateModal">
+              <?php _e('Add food', 'palgoals-dash');?>
+            </button>
+          </div>
                         </div>
                     </div>
                     <!-- Card Body -->
@@ -169,5 +171,5 @@ $query = new WP_Query($args);
     </div>
 </div>
 <!-- [ Main Content ] -->
-
-<?php include plugin_dir_path(__DIR__). '/partials/footer.php';?>
+<?php include plugin_dir_path(dirname(__DIR__)) . 'templates/food/add-food.php';?>
+<?php include plugin_dir_path(dirname(__DIR__, 3)) . 'templates/partials/footer.php';?>

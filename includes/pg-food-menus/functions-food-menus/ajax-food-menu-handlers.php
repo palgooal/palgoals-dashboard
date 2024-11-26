@@ -29,5 +29,4 @@ function palgoals_add_menu_category() {
         wp_send_json_success(['message' => 'Category added successfully', 'term_id' => $term['term_id']]);
     }
 }
-
 ?>

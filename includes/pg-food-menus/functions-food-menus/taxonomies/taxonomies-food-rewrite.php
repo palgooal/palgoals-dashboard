@@ -16,7 +16,7 @@ add_filter('query_vars', 'palgoals_menus_category_query_vars');
 function palgoals_menus_category_dashboard_page() {
     if (get_query_var('pg_category_menus')) {
         if (is_user_logged_in()) {
-            include dirname(__DIR__, 4) . '/templates/menus/category-menus.php';
+            include plugin_dir_path(dirname(__DIR__)) . '/templates/taxonomies/category-menus.php';
         } else {
             wp_safe_redirect(wp_login_url());
             exit;

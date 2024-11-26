@@ -5,7 +5,7 @@ if (!defined('ABSPATH')) {
 }
 
 // تضمين الهيدر
-include plugin_dir_path(__DIR__) . '/partials/header.php';
+include plugin_dir_path(dirname(__DIR__, 3)) . 'templates/partials/header.php';
 
 // جلب جميع التصنيفات
 $categories = get_terms([
@@ -96,5 +96,5 @@ $categories = get_terms([
     </div>
 </div>
 
-<?php include plugin_dir_path(__DIR__). '/partials/footer.php'; ?>
-<?php include plugin_dir_path(__DIR__). 'modal/modal-menu/add-categories.php'; ?>
+<?php include plugin_dir_path(dirname(__DIR__, 3)) . 'templates/partials/footer.php'; ?>
+<?php include plugin_dir_path(__DIR__). 'taxonomies/add-categories.php'; ?>
