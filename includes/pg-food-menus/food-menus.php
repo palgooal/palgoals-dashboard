@@ -3,6 +3,7 @@
 if (!defined('ABSPATH')) exit;
 
 // تضمين الوظائف المساعدة
+// require_once plugin_dir_path(__DIR__) . 'pg-food-menus/functions-food-menus/food/register-food-menus.php';
 include_once plugin_dir_path(__DIR__) . 'pg-food-menus/functions-food-menus/food/food-rewrite.php';
 include_once plugin_dir_path(__DIR__) . 'pg-food-menus/functions-food-menus/food/ajax-food-handlers.php';
 include_once plugin_dir_path(__DIR__) . 'pg-food-menus/functions-food-menus/food/food-assets.php';

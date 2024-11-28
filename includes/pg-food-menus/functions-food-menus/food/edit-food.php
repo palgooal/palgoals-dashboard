@@ -70,19 +70,65 @@ function palgoals_remove_theme_edit_food() {
 }
 add_action('wp_enqueue_scripts', 'palgoals_remove_theme_edit_food', 99);
 
-/**
- * تحميل سكربتات خاصة لإضافة صور التصنيفات في صفحات التصنيفات
- */
-// function enqueue_category_edit_food_image_script($hook_suffix) {
-//     if ('term.php' === $hook_suffix || 'edit-tags.php' === $hook_suffix) {
-//         wp_enqueue_media();
-//         wp_enqueue_script(
-//             'category-image-script',
-//             plugin_dir_url(dirname(__DIR__, 2)) . 'assets/js/pg-pages/category-image.js',
-//             array('jquery'),
-//             null,
-//             true
-//         );
-//     }
-// }
-// add_action('admin_enqueue_scripts', 'enqueue_category_edit_foodimage_script');
+// معالج تحديث بيانات الطعام
+add_action('admin_post_update_food', 'palgoals_update_food_handler');
+
+add_action('admin_post_update_food', 'palgoals_update_food_handler');
+
+function palgoals_update_food_handler() {
+    // تحقق من nonce للحماية
+    if (!isset($_POST['update_food_nonce']) || !wp_verify_nonce($_POST['update_food_nonce'], 'update_food')) {
+        wp_die(__('Security check failed', 'palgoals-core'));
+    }
+
+    // جلب معرف الطعام
+    $food_id = isset($_POST['food_id']) ? intval($_POST['food_id']) : 0;
+
+    if ($food_id) {
+        // تحديث بيانات المنشور
+        wp_update_post([
+            'ID' => $food_id,
+            'post_title' => sanitize_text_field($_POST['food_title']),
+            'post_content' => sanitize_textarea_field($_POST['food_description']),
+        ]);
+
+        // تحديث البيانات الوصفية
+        update_post_meta($food_id, '_pg_food_menu_price', sanitize_text_field($_POST['food_price']));
+        update_post_meta($food_id, '_food_image', intval($_POST['image_id']));
+
+        // تحديث التصنيفات
+        if (isset($_POST['food_category'])) {
+            wp_set_post_terms($food_id, $_POST['food_category'], 'pg_food_menu_category');
+        }
+
+        // إعادة التوجيه إلى رابط لوحة التحكم المخصص مع رسالة نجاح
+        $redirect_url = add_query_arg([
+            'id' => $food_id,
+            'updated' => 'true',
+        ], home_url('/dashboard/pg-menus/edit-food/'));
+
+        wp_safe_redirect($redirect_url); // إعادة التوجيه إلى الرابط الصحيح
+        exit;
+    } else {
+        wp_die(__('Invalid food ID', 'palgoals-core'));
+    }
+}
+
+
+
+function palgoals_add_food_menu_caps() {
+    // جلب الدور "Administrator"
+    $role = get_role('administrator');
+
+    // إضافة صلاحيات نوع المنشور المخصص
+    if ($role) {
+        $role->add_cap('edit_pg_food_menu');
+        $role->add_cap('read_pg_food_menu');
+        $role->add_cap('delete_pg_food_menu');
+        $role->add_cap('edit_pg_food_menus');
+        $role->add_cap('edit_others_pg_food_menus');
+        $role->add_cap('publish_pg_food_menus');
+        $role->add_cap('read_private_pg_food_menus');
+    }
+}
+add_action('admin_init', 'palgoals_add_food_menu_caps');
