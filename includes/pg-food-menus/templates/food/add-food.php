@@ -14,7 +14,6 @@
                         <div class="mb-3">
                             <label for="food-title" class="form-label"><?php _e('Add Title', 'palgoals-core'); ?></label>
                             <input type="text" name="food_title" id="food-title" class="form-control" required placeholder="<?php _e('Enter the Food name', 'palgoals-core'); ?>" />
-                            <small class="form-text text-muted">Please enter the page name</small>
                         </div>
 
                         <div class="mb-3">
@@ -29,7 +28,7 @@
                             </div>
 
                             <div class="col-span-12 md:col-span-6 mb-4">
-                                <label for="parent-category" class="form-label">Parent Category</label>
+                                <label for="parent-category" class="form-label"><?php _e('Category', 'palgoals-core'); ?></label>
                                 <select id="parent-category" name="parent" class="form-control">
                                     <option value="0"><?php esc_html_e('None', 'palgoals-dash'); ?></option>
                                     <?php
@@ -50,11 +49,11 @@
                         </div>
 
                         <div class="mb-3">
-    <label><?php _e('Food Image', 'palgoals-core'); ?></label>
-    <div id="Food-image-preview" class="mb-2"></div>
-    <button type="button" id="upload-food-image" class="btn btn-secondary"><?php _e('Upload Image', 'palgoals-core'); ?></button>
-    <input type="hidden" id="food_image" name="image_id">
-</div>
+                            <label><?php _e('Food Image', 'palgoals-core'); ?></label>
+                            <div id="Food-image-preview" class="mb-2"></div>
+                            <button type="button" id="upload-food-image" class="btn btn-secondary"><?php _e('Upload Image', 'palgoals-core'); ?></button>
+                            <input type="hidden" id="food_image" name="image_id">
+                        </div>
 
                         <input type="hidden" id="redirect-url" name="redirect_url" value="<?php echo esc_url(get_site_url()); ?>" />
                     </form>

@@ -7,7 +7,6 @@ if (!defined('ABSPATH')) {
 // تضمين الهيدر
 include plugin_dir_path(dirname(__DIR__, 3)) . 'templates/partials/header.php';
 
-
 // التحقق من الصفحة الحالية
 $paged = get_query_var('paged') ? absint(get_query_var('paged')) : 1;
 
@@ -43,10 +42,10 @@ $query = new WP_Query($args);
                         <div class="sm:flex items-center justify-between">
                             <h5 class="mb-3 sm:mb-0"><?php esc_html_e('All Food', 'palgoals-dash'); ?></h5>
                             <div>
-            <button data-pc-animate="side-fall" type="button" class="btn btn-primary" data-pc-toggle="modal" data-pc-target="#animateModal">
-              <?php _e('Add food', 'palgoals-dash');?>
-            </button>
-          </div>
+                                <button data-pc-animate="side-fall" type="button" class="btn btn-primary" data-pc-toggle="modal" data-pc-target="#animateModal">
+                                    <?php _e('Add food', 'palgoals-dash');?>
+                                </button>
+                            </div>
                         </div>
                     </div>
                     <!-- Card Body -->
@@ -133,7 +132,7 @@ $query = new WP_Query($args);
                                                     <a href="<?php echo esc_url(get_permalink()); ?>" target="_blank" class="btn-link-secondary">
                                                         <i class="ti ti-eye"></i>
                                                     </a>
-                                                    <a href="<?php echo esc_url(admin_url('post.php?post=' . get_the_ID() . '&action=edit')); ?>" target="_blank" class="btn-link-secondary">
+                                                    <a href="<?php echo get_home_url(). '/dashboard/pg-menus/edit-food?id=' . get_the_ID() ; ?>" target="_blank" class="btn-link-secondary">
                                                         <i class="ti ti-edit"></i>
                                                     </a>
                                                     <a href="#" class="btn-link-secondary delete-page" data-page-id="<?php echo esc_attr(get_the_ID()); ?>">
