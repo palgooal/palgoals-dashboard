@@ -19,17 +19,19 @@ function palgoals_enqueue_menus_dashboard_assets() {
             null,
             true
         );
-        // wp_enqueue_script(
-        //     'palgoals-edit-food-ajax',
-        //     plugin_dir_url(__DIR__) . 'js/edit-food-ajax.js',
-        //     array('jquery'),
-        //     null,
-        //     true
-        // );
+
         wp_enqueue_script(
             'palgoals-upload-image',
             plugin_dir_url(__DIR__) . 'js/upload-image.js',
             array('jquery'),
+            null,
+            true
+        );
+
+        wp_enqueue_script(
+            'palgoals-delete-food-script',
+            plugin_dir_url(__DIR__) . 'js/delete-food-item.js',
+            ['jquery'],
             null,
             true
         );
@@ -39,6 +41,11 @@ function palgoals_enqueue_menus_dashboard_assets() {
             'ajax_url' => admin_url('admin-ajax.php'),
             'nonce'    => wp_create_nonce('food_ajax_nonce'),
         ));
+
+        wp_localize_script('palgoals-delete-food-script', 'palgoalsData', [
+            'ajax_url' => admin_url('admin-ajax.php'),
+            'nonce'    => wp_create_nonce('food_ajax_nonce'),
+        ]);
 
 
     }

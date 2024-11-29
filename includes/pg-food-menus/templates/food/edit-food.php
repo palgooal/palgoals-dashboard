@@ -1,12 +1,12 @@
 <?php
-// تأكد من منع الوصول المباشر
+// منع الوصول المباشر
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
-// تحقق مما إذا كانت هناك بيانات مرسلة عبر POST (عملية الحفظ)
+// التعامل مع البيانات المرسلة عبر POST (عملية الحفظ)
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_food_nonce'])) {
-    // تحقق من nonce للحماية
+    // تحقق من صحة nonce للحماية
     if (!wp_verify_nonce($_POST['update_food_nonce'], 'update_food')) {
         wp_die(__('Security check failed', 'palgoals-core'));
     }
@@ -17,26 +17,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_food_nonce']))
     if ($food_id) {
         // تحديث بيانات المنشور
         wp_update_post([
-            'ID' => $food_id,
-            'post_title' => sanitize_text_field($_POST['food_title']),
+            'ID'           => $food_id,
+            'post_title'   => sanitize_text_field($_POST['food_title']),
             'post_content' => sanitize_textarea_field($_POST['food_description']),
         ]);
 
+        // تحديث الصورة البارزة
+        if (!empty($_POST['image_id'])) {
+            set_post_thumbnail($food_id, intval($_POST['image_id']));
+        } else {
+            delete_post_thumbnail($food_id);
+        }
+
         // تحديث البيانات الوصفية
         update_post_meta($food_id, '_pg_food_menu_price', sanitize_text_field($_POST['food_price']));
-        if (!empty($_POST['image_id'])) {
-            $image_id = intval($_POST['image_id']);
-            set_post_thumbnail($food_id, $image_id); // حفظ الصورة البارزة
-        } else {
-            delete_post_thumbnail($food_id); // إزالة الصورة إذا لم يتم تحديد صورة
-        }
 
         // تحديث التصنيفات
         if (isset($_POST['food_category'])) {
             wp_set_post_terms($food_id, $_POST['food_category'], 'pg_food_menu_category');
         }
 
-        // إعادة توجيه مع رسالة نجاح
+        // إعادة التوجيه مع رسالة نجاح
         wp_redirect(add_query_arg(['id' => $food_id, 'updated' => 'true'], home_url('/dashboard/pg-menus/edit-food/')));
         exit;
     } else {
@@ -44,39 +45,27 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_food_nonce']))
     }
 }
 
-// معالجة الطلبات العادية (GET) لعرض الصفحة
+// التعامل مع الطلبات العادية (GET) لعرض الصفحة
 $food_id = isset($_GET['id']) ? intval($_GET['id']) : 0;
 
 if ($food_id) {
-    // جلب البيانات الخاصة بالعنصر
+    // جلب بيانات المنشور
     $food_post = get_post($food_id);
 
     if ($food_post && $food_post->post_type === 'pg_food_menu') {
-        $food_title = $food_post->post_title;
-        $food_price = get_post_meta($food_id, '_pg_food_menu_price', true);
+        $food_title       = $food_post->post_title;
+        $food_price       = get_post_meta($food_id, '_pg_food_menu_price', true);
         $food_description = $food_post->post_content;
-        $food_image_id = get_post_meta($food_id, '_food_image', true);
 
-        // جلب جميع التصنيفات
-        $categories = get_terms([
-            'taxonomy' => 'pg_food_menu_category',
-            'hide_empty' => false,
-        ]);
-
-        // جلب التصنيفات المرتبطة بالمنشور
+        // جلب التصنيفات
+        $categories    = get_terms(['taxonomy' => 'pg_food_menu_category', 'hide_empty' => false]);
         $food_category = wp_get_post_terms($food_id, 'pg_food_menu_category', ['fields' => 'ids']);
-
-        // إعداد رابط الصورة وعنصر <img>
-        $food_image_html = $food_image_id
-            ? wp_get_attachment_image($food_image_id, 'thumbnail', false, ['class' => 'img-thumbnail'])
-            : '<p>' . __('No image uploaded', 'palgoals-core') . '</p>';
     } else {
         wp_die(__('Invalid food ID or post type', 'palgoals-core'));
     }
 } else {
     wp_die(__('No food ID provided', 'palgoals-core'));
 }
-
 
 // تضمين الهيدر
 include plugin_dir_path(dirname(__DIR__, 3)) . 'templates/partials/header.php';
@@ -102,18 +91,14 @@ include plugin_dir_path(dirname(__DIR__, 3)) . 'templates/partials/header.php';
                         <h5 class="mb-0"><?php _e('Edit Food', 'palgoals-dash'); ?></h5>
                     </div>
                     <div class="card-body">
-                    <?php
-// تحقق من وجود معلمة 'updated'
-if (isset($_GET['updated']) && $_GET['updated'] === 'true') {
-    echo '<div class="notice notice-success is-dismissible">';
-    echo '<p>' . __('Food item updated successfully!', 'palgoals-core') . '</p>';
-    echo '</div>';
-}
-?>
+                        <?php if (isset($_GET['updated']) && $_GET['updated'] === 'true') : ?>
+                            <div class="notice notice-success is-dismissible">
+                                <p><?php _e('Food item updated successfully!', 'palgoals-core'); ?></p>
+                            </div>
+                        <?php endif; ?>
 
                         <form method="post" action="<?php echo esc_url(home_url('/dashboard/pg-menus/edit-food/')); ?>">
                             <?php wp_nonce_field('update_food', 'update_food_nonce'); ?>
-                            <input type="hidden" name="action" value="update_food">
                             <input type="hidden" name="food_id" value="<?php echo esc_attr($food_id); ?>">
 
                             <div class="grid grid-cols-12 gap-x-6">
@@ -121,7 +106,7 @@ if (isset($_GET['updated']) && $_GET['updated'] === 'true') {
                                 <div class="col-span-12 md:col-span-6">
                                     <div class="mb-3">
                                         <label for="food-title" class="form-label"><?php _e('Food Title', 'palgoals-core'); ?></label>
-                                        <input type="text" name="food_title" id="food-title" class="form-control" value="<?php echo esc_attr($food_title); ?>"/>
+                                        <input type="text" name="food_title" id="food-title" class="form-control" value="<?php echo esc_attr($food_title); ?>" />
                                     </div>
                                 </div>
 
@@ -129,7 +114,7 @@ if (isset($_GET['updated']) && $_GET['updated'] === 'true') {
                                 <div class="col-span-12 md:col-span-6">
                                     <div class="mb-3">
                                         <label for="food-price" class="form-label"><?php _e('Food Price', 'palgoals-core'); ?></label>
-                                        <input type="number" name="food_price" id="food-price" class="form-control" value="<?php echo esc_attr($food_price); ?>"/>
+                                        <input type="number" name="food_price" id="food-price" class="form-control" value="<?php echo esc_attr($food_price); ?>" />
                                     </div>
                                 </div>
 
@@ -137,7 +122,7 @@ if (isset($_GET['updated']) && $_GET['updated'] === 'true') {
                                 <div class="col-span-12 md:col-span-6">
                                     <div class="mb-3">
                                         <label for="food-description" class="form-label"><?php _e('Food Description', 'palgoals-core'); ?></label>
-                                        <textarea name="food_description" id="food-description" class="form-control" required><?php echo esc_html($food_description); ?></textarea>
+                                        <textarea name="food_description" id="food-description" class="form-control"><?php echo esc_html($food_description); ?></textarea>
                                     </div>
                                 </div>
 
@@ -146,13 +131,13 @@ if (isset($_GET['updated']) && $_GET['updated'] === 'true') {
                                     <div class="mb-3">
                                         <label for="parent-category" class="form-label"><?php _e('Category', 'palgoals-core'); ?></label>
                                         <select id="parent-category" name="food_category[]" class="form-control" multiple>
-                                            <?php if (!empty($categories) && !is_wp_error($categories)): ?>
-                                                <?php foreach ($categories as $category): ?>
+                                            <?php if (!empty($categories)) : ?>
+                                                <?php foreach ($categories as $category) : ?>
                                                     <option value="<?php echo esc_attr($category->term_id); ?>" <?php echo in_array($category->term_id, $food_category) ? 'selected' : ''; ?>>
                                                         <?php echo esc_html($category->name); ?>
                                                     </option>
                                                 <?php endforeach; ?>
-                                            <?php else: ?>
+                                            <?php else : ?>
                                                 <option value=""><?php _e('No categories found', 'palgoals-core'); ?></option>
                                             <?php endif; ?>
                                         </select>

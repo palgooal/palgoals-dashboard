@@ -1,5 +1,5 @@
 <?php
-// تأكد من منع الوصول المباشر
+// منع الوصول المباشر
 if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
@@ -12,19 +12,18 @@ $paged = get_query_var('paged') ? absint(get_query_var('paged')) : 1;
 
 // إعداد الاستعلام لجلب المنشورات
 $args = [
-    'post_type' => 'pg_food_menu',
-    'posts_per_page' => 10,
-    'paged' => $paged,
-    'post_status' => ['publish', 'draft'],
+    'post_type'      => 'pg_food_menu',
+    'posts_per_page' => 5,
+    'paged'          => $paged,
+    'post_status'    => ['publish', 'draft'],
 ];
-
 $query = new WP_Query($args);
 ?>
 
 <!-- [ Main Content ] -->
 <div class="pc-container">
     <div class="pc-content">
-        <!-- [ breadcrumb ] -->
+        <!-- [ Breadcrumb ] -->
         <div class="page-header">
             <div class="page-block">
                 <div class="page-header-title">
@@ -32,7 +31,6 @@ $query = new WP_Query($args);
                 </div>
             </div>
         </div>
-        <!-- [ breadcrumb ] -->
         <!-- [ Main Content Section ] -->
         <div class="grid grid-cols-12 gap-x-6">
             <div class="col-span-12">
@@ -41,11 +39,9 @@ $query = new WP_Query($args);
                     <div class="card-header">
                         <div class="sm:flex items-center justify-between">
                             <h5 class="mb-3 sm:mb-0"><?php esc_html_e('All Food', 'palgoals-dash'); ?></h5>
-                            <div>
-                                <button data-pc-animate="side-fall" type="button" class="btn btn-primary" data-pc-toggle="modal" data-pc-target="#animateModal">
-                                    <?php _e('Add food', 'palgoals-dash');?>
-                                </button>
-                            </div>
+                            <button data-pc-animate="side-fall" type="button" class="btn btn-primary" data-pc-toggle="modal" data-pc-target="#animateModal">
+                                <?php esc_html_e('Add Food', 'palgoals-dash'); ?>
+                            </button>
                         </div>
                     </div>
                     <!-- Card Body -->
@@ -67,11 +63,9 @@ $query = new WP_Query($args);
                                     <?php if ($query->have_posts()) : ?>
                                         <?php while ($query->have_posts()) : $query->the_post(); ?>
                                             <tr>
-                                                <!-- Checkbox -->
                                                 <td>
                                                     <input type="checkbox" name="page_ids[]" value="<?php echo esc_attr(get_the_ID()); ?>" class="select_single">
                                                 </td>
-                                                <!-- Image -->
                                                 <td>
                                                     <?php if (has_post_thumbnail()) : ?>
                                                         <?php the_post_thumbnail('thumbnail', ['class' => 'w-16 h-16']); ?>
@@ -79,9 +73,7 @@ $query = new WP_Query($args);
                                                         <span><?php esc_html_e('No Image', 'palgoals-dash'); ?></span>
                                                     <?php endif; ?>
                                                 </td>
-                                                <!-- Title -->
                                                 <td><?php the_title(); ?></td>
-                                                <!-- Price -->
                                                 <td>
                                                     <?php 
                                                     $price = get_post_meta(get_the_ID(), '_pg_food_menu_price', true);
@@ -98,11 +90,9 @@ $query = new WP_Query($args);
                                                         'JOD' => 'دينار أردني',
                                                         'USD' => 'دولار أمريكي',
                                                     ][$currency] ?? $currency;
-
                                                     echo esc_html($price) . ' ' . esc_html($currency_label);
                                                     ?>
                                                 </td>
-                                                <!-- Categories -->
                                                 <td>
                                                     <?php 
                                                     $categories = get_the_terms(get_the_ID(), 'pg_food_menu_category');
@@ -115,27 +105,20 @@ $query = new WP_Query($args);
                                                     endif;
                                                     ?>
                                                 </td>
-                                                <!-- Status -->
                                                 <td>
                                                     <?php $current_status = get_post_status(); ?>
-                                                    <div class="flex space-x-2">
-                                                        <button class="toggle-status <?php echo ($current_status === 'publish') ? 'bg-green-500' : 'bg-gray-300'; ?>" data-page-id="<?php echo esc_attr(get_the_ID()); ?>">
-                                                            <?php esc_html_e('Publish', 'palgoals-dash'); ?>
-                                                        </button>
-                                                        <button class="toggle-status <?php echo ($current_status === 'draft') ? 'bg-green-500' : 'bg-gray-300'; ?>" data-page-id="<?php echo esc_attr(get_the_ID()); ?>">
-                                                            <?php esc_html_e('Draft', 'palgoals-dash'); ?>
-                                                        </button>
-                                                    </div>
+                                                    <button class="toggle-status <?php echo ($current_status === 'publish') ? 'bg-green-500' : 'bg-gray-300'; ?>" data-page-id="<?php echo esc_attr(get_the_ID()); ?>">
+                                                        <?php echo ucfirst($current_status); ?>
+                                                    </button>
                                                 </td>
-                                                <!-- Actions -->
                                                 <td>
                                                     <a href="<?php echo esc_url(get_permalink()); ?>" target="_blank" class="btn-link-secondary">
                                                         <i class="ti ti-eye"></i>
                                                     </a>
-                                                    <a href="<?php echo get_home_url(). '/dashboard/pg-menus/edit-food?id=' . get_the_ID() ; ?>" target="_blank" class="btn-link-secondary">
+                                                    <a href="<?php echo home_url('/dashboard/pg-menus/edit-food?id=' . get_the_ID()); ?>" class="btn-link-secondary">
                                                         <i class="ti ti-edit"></i>
                                                     </a>
-                                                    <a href="#" class="btn-link-secondary delete-page" data-page-id="<?php echo esc_attr(get_the_ID()); ?>">
+                                                    <a href="#" class="btn-link-secondary delete-food-item" data-post-id="<?php echo esc_attr(get_the_ID()); ?>">
                                                         <i class="ti ti-trash"></i>
                                                     </a>
                                                 </td>
@@ -143,7 +126,7 @@ $query = new WP_Query($args);
                                         <?php endwhile; ?>
                                     <?php else : ?>
                                         <tr>
-                                            <td colspan="7" class="text-center"><?php esc_html_e('No Food Menus Found.', 'palgoals-core'); ?></td>
+                                            <td colspan="7" class="text-center"><?php esc_html_e('No Food Menus Found.', 'palgoals-dash'); ?></td>
                                         </tr>
                                     <?php endif; ?>
                                 </tbody>
@@ -155,20 +138,42 @@ $query = new WP_Query($args);
                     <?php if ($query->max_num_pages > 1) : ?>
                         <nav aria-label="Page navigation">
                             <ul class="pagination">
+                                <!-- الصفحة السابقة -->
+                                <?php if ($paged > 1) : ?>
+                                    <li class="page-item">
+                                        <a class="page-link" href="<?php echo esc_url(get_pagenum_link($paged - 1)); ?>">
+                                            <?php esc_html_e('Previous', 'palgoals-dash'); ?>
+                                        </a>
+                                    </li>
+                                <?php endif; ?>
+
+                                <!-- أرقام الصفحات -->
                                 <?php for ($i = 1; $i <= $query->max_num_pages; $i++) : ?>
-                                    <li class="<?php echo ($paged === $i) ? 'active' : ''; ?>">
-                                        <a href="<?php echo esc_url(add_query_arg('paged', $i)); ?>"><?php echo esc_html($i); ?></a>
+                                    <li class="page-item <?php echo ($paged === $i) ? 'active' : ''; ?>">
+                                        <a class="page-link" href="<?php echo esc_url(get_pagenum_link($i)); ?>">
+                                            <?php echo esc_html($i); ?>
+                                        </a>
                                     </li>
                                 <?php endfor; ?>
+
+                                <!-- الصفحة التالية -->
+                                <?php if ($paged < $query->max_num_pages) : ?>
+                                    <li class="page-item">
+                                        <a class="page-link" href="<?php echo esc_url(get_pagenum_link($paged + 1)); ?>">
+                                            <?php esc_html_e('Next', 'palgoals-dash'); ?>
+                                        </a>
+                                    </li>
+                                <?php endif; ?>
                             </ul>
                         </nav>
                     <?php endif; ?>
+
                 </div>
             </div>
         </div>
-        <!-- [ Main Content Section ] -->
     </div>
 </div>
-<!-- [ Main Content ] -->
-<?php include plugin_dir_path(dirname(__DIR__)) . 'templates/food/add-food.php';?>
-<?php include plugin_dir_path(dirname(__DIR__, 3)) . 'templates/partials/footer.php';?>
+
+<!-- [ Include Add Food Modal ] -->
+<?php include plugin_dir_path(dirname(__DIR__)) . 'templates/food/add-food.php'; ?>
+<?php include plugin_dir_path(dirname(__DIR__, 3)) . 'templates/partials/footer.php'; ?>
