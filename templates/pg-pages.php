@@ -67,20 +67,11 @@ $query = new WP_Query($args);
                   <td><?php the_title(); ?></td>
                   <td><?php echo get_the_date(); ?></td>
                   <td>
-    <?php
-    $current_status = get_post_status(); // الحصول على الحالة الحالية
-    ?>
-    <div class="flex space-x-2">
-        <button class="toggle-status <?php echo ($current_status === 'publish') ? 'bg-green-500' : 'bg-gray-300'; ?>" data-page-id="<?php echo get_the_ID(); ?>">
-            <?php _e('Publish', 'palgoals-dash'); ?>
-        </button>
-        <button class="toggle-status <?php echo ($current_status === 'draft') ? 'bg-green-500' : 'bg-gray-300'; ?>" data-page-id="<?php echo get_the_ID(); ?>">
-            <?php _e('Draft', 'palgoals-dash'); ?>
-        </button>
-    </div>
-</td>
-
-
+                    <?php $current_status = get_post_status(); ?>
+                    <a class="badge text-white  <?php echo ($current_status === 'publish') ? 'bg-green-500' : 'bg-secondary-500'; ?>" data-page-id="<?php echo esc_attr(get_the_ID()); ?>">
+                      <?php echo ucfirst($current_status); ?>
+                    </a>
+                  </td>
                   <td>
                     <a href="<?php echo get_permalink();?>" target="_blank" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
                       <i class="ti ti-eye text-xl leading-none"></i>

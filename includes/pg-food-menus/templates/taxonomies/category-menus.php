@@ -70,13 +70,14 @@ $categories = get_terms([
                                         <!-- Actions -->
                                         <td>
                                             <a href="<?php echo esc_url(get_term_link($category->term_id, 'pg_food_menu_category')); ?>" target="_blank" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
-                                                <i class="ti ti-eye"></i>
+                                                <i class="ti ti-eye text-xl leading-none"></i>
                                             </a>
-                                            <a class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary" type="button" data-pc-toggle="offcanvas" data-pc-target="#editcategories" aria-controls="editcategories">
-                                                <i class="ti ti-edit"></i>
+                                            <?php $a= $category->term_id;?>
+                                            <a href="edit-category/?id=<?php echo $a; ?>" target="_blank" class="btn-link-secondary">
+                                                <i class="ti ti-edit text-xl leading-none"></i>
                                             </a>
-                                            <a href="#" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary delete-category" data-category-id="<?php echo esc_attr($category->term_id); ?>">
-                                                <i class="ti ti-trash"></i>
+                                            <a href="<?php echo $category->term_id; ?>" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary delete-category" data-category-id="<?php echo esc_attr($category->term_id); ?>">
+                                                <i class="ti ti-trash text-xl leading-none"></i>
                                             </a>
                                         </td>
                                     </tr>

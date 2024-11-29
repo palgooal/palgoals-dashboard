@@ -16,3 +16,4 @@ include_once plugin_dir_path(__DIR__) . 'pg-food-menus/functions-food-menus/taxo
 include_once plugin_dir_path(__DIR__) . 'pg-food-menus/functions-food-menus/taxonomies/taxonomies-food-assets.php';
 include_once plugin_dir_path(__DIR__) . 'pg-food-menus/functions-food-menus/taxonomies/taxonomies-food-menu-category.php';
 include_once plugin_dir_path(__DIR__) . 'pg-food-menus/functions-food-menus/taxonomies/taxonomies-ajax-food-menu-category.php';
+include_once plugin_dir_path(__DIR__) . 'pg-food-menus/functions-food-menus/taxonomies/edit-categories.php';

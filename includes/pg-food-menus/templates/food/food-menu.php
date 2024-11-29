@@ -107,19 +107,19 @@ $query = new WP_Query($args);
                                                 </td>
                                                 <td>
                                                     <?php $current_status = get_post_status(); ?>
-                                                    <button class="toggle-status <?php echo ($current_status === 'publish') ? 'bg-green-500' : 'bg-gray-300'; ?>" data-page-id="<?php echo esc_attr(get_the_ID()); ?>">
+                                                    <a class="badge text-white  <?php echo ($current_status === 'publish') ? 'bg-green-500' : 'bg-secondary-500'; ?>" data-page-id="<?php echo esc_attr(get_the_ID()); ?>">
                                                         <?php echo ucfirst($current_status); ?>
-                                                    </button>
+                                                    </a>
                                                 </td>
                                                 <td>
-                                                    <a href="<?php echo esc_url(get_permalink()); ?>" target="_blank" class="btn-link-secondary">
-                                                        <i class="ti ti-eye"></i>
+                                                    <a href="<?php echo esc_url(get_permalink()); ?>" target="_blank" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary">
+                                                        <i class="ti ti-eye text-xl leading-none"></i>
                                                     </a>
                                                     <a href="<?php echo home_url('/dashboard/pg-menus/edit-food?id=' . get_the_ID()); ?>" class="btn-link-secondary">
-                                                        <i class="ti ti-edit"></i>
+                                                        <i class="ti ti-edit text-xl leading-none"></i>
                                                     </a>
-                                                    <a href="#" class="btn-link-secondary delete-food-item" data-post-id="<?php echo esc_attr(get_the_ID()); ?>">
-                                                        <i class="ti ti-trash"></i>
+                                                    <a href="#" class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary delete-food-item" data-post-id="<?php echo esc_attr(get_the_ID()); ?>">
+                                                        <i class="ti ti-trash text-xl leading-none"></i>
                                                     </a>
                                                 </td>
                                             </tr>

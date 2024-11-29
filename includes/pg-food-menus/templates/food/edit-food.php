@@ -92,7 +92,7 @@ include plugin_dir_path(dirname(__DIR__, 3)) . 'templates/partials/header.php';
                     </div>
                     <div class="card-body">
                         <?php if (isset($_GET['updated']) && $_GET['updated'] === 'true') : ?>
-                            <div class="notice notice-success is-dismissible">
+                            <div class="alert alert-success" role="alert">
                                 <p><?php _e('Food item updated successfully!', 'palgoals-core'); ?></p>
                             </div>
                         <?php endif; ?>
@@ -164,9 +164,6 @@ include plugin_dir_path(dirname(__DIR__, 3)) . 'templates/partials/header.php';
                                         <input type="hidden" id="food_image" name="image_id" value="<?php echo esc_attr(get_post_thumbnail_id($food_id)); ?>">
                                     </div>
                                 </div>
-
-
-
 
                                 <!-- Submit Button -->
                                 <div class="col-span-12 text-right">
