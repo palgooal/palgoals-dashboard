@@ -8,7 +8,7 @@ if (!defined('ABSPATH')) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_food_nonce'])) {
     // تحقق من صحة nonce للحماية
     if (!wp_verify_nonce($_POST['update_food_nonce'], 'update_food')) {
-        wp_die(__('Security check failed', 'palgoals-core'));
+        wp_die(__('Security check failed', 'palgoals-dashe'));
     }
 
     // جلب معرف الطعام
@@ -41,7 +41,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_food_nonce']))
         wp_redirect(add_query_arg(['id' => $food_id, 'updated' => 'true'], home_url('/dashboard/pg-menus/edit-food/')));
         exit;
     } else {
-        wp_die(__('Invalid food ID', 'palgoals-core'));
+        wp_die(__('Invalid food ID', 'palgoals-dashe'));
     }
 }
 
@@ -61,10 +61,10 @@ if ($food_id) {
         $categories    = get_terms(['taxonomy' => 'pg_food_menu_category', 'hide_empty' => false]);
         $food_category = wp_get_post_terms($food_id, 'pg_food_menu_category', ['fields' => 'ids']);
     } else {
-        wp_die(__('Invalid food ID or post type', 'palgoals-core'));
+        wp_die(__('Invalid food ID or post type', 'palgoals-dashe'));
     }
 } else {
-    wp_die(__('No food ID provided', 'palgoals-core'));
+    wp_die(__('No food ID provided', 'palgoals-dashe'));
 }
 
 // تضمين الهيدر
@@ -93,7 +93,7 @@ include plugin_dir_path(dirname(__DIR__, 3)) . 'templates/partials/header.php';
                     <div class="card-body">
                         <?php if (isset($_GET['updated']) && $_GET['updated'] === 'true') : ?>
                             <div class="alert alert-success" role="alert">
-                                <p><?php _e('Food item updated successfully!', 'palgoals-core'); ?></p>
+                                <p><?php _e('Food item updated successfully!', 'palgoals-dashe'); ?></p>
                             </div>
                         <?php endif; ?>
 
@@ -105,7 +105,7 @@ include plugin_dir_path(dirname(__DIR__, 3)) . 'templates/partials/header.php';
                                 <!-- Title Input -->
                                 <div class="col-span-12 md:col-span-6">
                                     <div class="mb-3">
-                                        <label for="food-title" class="form-label"><?php _e('Food Title', 'palgoals-core'); ?></label>
+                                        <label for="food-title" class="form-label"><?php _e('Food Title', 'palgoals-dashe'); ?></label>
                                         <input type="text" name="food_title" id="food-title" class="form-control" value="<?php echo esc_attr($food_title); ?>" />
                                     </div>
                                 </div>
@@ -113,7 +113,7 @@ include plugin_dir_path(dirname(__DIR__, 3)) . 'templates/partials/header.php';
                                 <!-- Price Input -->
                                 <div class="col-span-12 md:col-span-6">
                                     <div class="mb-3">
-                                        <label for="food-price" class="form-label"><?php _e('Food Price', 'palgoals-core'); ?></label>
+                                        <label for="food-price" class="form-label"><?php _e('Food Price', 'palgoals-dashe'); ?></label>
                                         <input type="number" name="food_price" id="food-price" class="form-control" value="<?php echo esc_attr($food_price); ?>" />
                                     </div>
                                 </div>
@@ -121,7 +121,7 @@ include plugin_dir_path(dirname(__DIR__, 3)) . 'templates/partials/header.php';
                                 <!-- Description Input -->
                                 <div class="col-span-12 md:col-span-6">
                                     <div class="mb-3">
-                                        <label for="food-description" class="form-label"><?php _e('Food Description', 'palgoals-core'); ?></label>
+                                        <label for="food-description" class="form-label"><?php _e('Food Description', 'palgoals-dashe'); ?></label>
                                         <textarea name="food_description" id="food-description" class="form-control"><?php echo esc_html($food_description); ?></textarea>
                                     </div>
                                 </div>
@@ -129,7 +129,7 @@ include plugin_dir_path(dirname(__DIR__, 3)) . 'templates/partials/header.php';
                                 <!-- Category Selection -->
                                 <div class="col-span-12 md:col-span-6">
                                     <div class="mb-3">
-                                        <label for="parent-category" class="form-label"><?php _e('Category', 'palgoals-core'); ?></label>
+                                        <label for="parent-category" class="form-label"><?php _e('Category', 'palgoals-dashe'); ?></label>
                                         <select id="parent-category" name="food_category[]" class="form-control" multiple>
                                             <?php if (!empty($categories)) : ?>
                                                 <?php foreach ($categories as $category) : ?>
@@ -138,7 +138,7 @@ include plugin_dir_path(dirname(__DIR__, 3)) . 'templates/partials/header.php';
                                                     </option>
                                                 <?php endforeach; ?>
                                             <?php else : ?>
-                                                <option value=""><?php _e('No categories found', 'palgoals-core'); ?></option>
+                                                <option value=""><?php _e('No categories found', 'palgoals-dashe'); ?></option>
                                             <?php endif; ?>
                                         </select>
                                     </div>
@@ -147,19 +147,19 @@ include plugin_dir_path(dirname(__DIR__, 3)) . 'templates/partials/header.php';
                                 <!-- Food Image Upload -->
                                 <div class="col-span-12 md:col-span-6">
                                     <div class="mb-3">
-                                        <label><?php _e('Food Image', 'palgoals-core'); ?></label>
+                                        <label><?php _e('Food Image', 'palgoals-dashe'); ?></label>
                                         <div id="food-image-preview" class="mb-2">
                                             <?php
                                             // التأكد من وجود صورة بارزة
                                             if (has_post_thumbnail($food_id)) {
                                                 echo get_the_post_thumbnail($food_id, 'thumbnail', ['class' => 'img-thumbnail']);
                                                 } else {
-                                                    echo '<p>' . __('No image uploaded', 'palgoals-core') . '</p>';
+                                                    echo '<p>' . __('No image uploaded', 'palgoals-dashe') . '</p>';
                                                 }
                                             ?>
                                         </div>
                                         <button type="button" id="upload-food-image" class="btn btn-secondary">
-                                            <?php _e('Upload Image', 'palgoals-core'); ?>
+                                            <?php _e('Upload Image', 'palgoals-dashe'); ?>
                                         </button>
                                         <input type="hidden" id="food_image" name="image_id" value="<?php echo esc_attr(get_post_thumbnail_id($food_id)); ?>">
                                     </div>
@@ -167,7 +167,7 @@ include plugin_dir_path(dirname(__DIR__, 3)) . 'templates/partials/header.php';
 
                                 <!-- Submit Button -->
                                 <div class="col-span-12 text-right">
-                                    <button type="submit" class="btn btn-primary"><?php _e('Update Food', 'palgoals-core'); ?></button>
+                                    <button type="submit" class="btn btn-primary"><?php _e('Update Food', 'palgoals-dashe'); ?></button>
                                 </div>
                             </div>
                         </form>

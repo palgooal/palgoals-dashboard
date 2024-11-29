@@ -40,14 +40,14 @@
                 </div>
                 <!-- Description -->
                 <div class="mb-3">
-                    <label for="category-description"><?php esc_html_e('Description', 'palgoals-core'); ?></label>
+                    <label for="category-description"><?php esc_html_e('Description', 'palgoals-dashe'); ?></label>
                     <textarea id="category-description" name="description" class="form-control"></textarea>
                 </div>
                 <!-- Image -->
                 <div class="mb-3">
-                    <label><?php esc_html_e('Category Image', 'palgoals-core'); ?></label>
+                    <label><?php esc_html_e('Category Image', 'palgoals-dashe'); ?></label>
                     <div id="category-image-preview" class="mb-2"></div>
-                    <button type="button" id="upload-category-image" class="btn btn-secondary"><?php esc_html_e('Upload Image', 'palgoals-core'); ?></button>
+                    <button type="button" id="upload-category-image" class="btn btn-secondary"><?php esc_html_e('Upload Image', 'palgoals-dashe'); ?></button>
                     <input type="hidden" id="category_image" name="image_id">
                 </div>
                 <!-- Submit -->

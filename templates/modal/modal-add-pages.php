@@ -11,21 +11,21 @@
                 <div class="card-body">
                 <form method="POST" action="">
                     <div class="mb-3">
-                        <label for="page-title" class="form-label"><?php _e('Page Title', 'palgoals-core'); ?></label>
-                        <input type="text" name="page_title" id="page-title" class="form-control" required placeholder="<?php _e('Enter the page name', 'palgoals-core'); ?>" />
+                        <label for="page-title" class="form-label"><?php _e('Page Title', 'palgoals-dashe'); ?></label>
+                        <input type="text" name="page_title" id="page-title" class="form-control" required placeholder="<?php _e('Enter the page name', 'palgoals-dashe'); ?>" />
                         <small class="form-text text-muted">Please enter the page name</small>
                     </div>
                     <div class="mb-3">
-                        <label for="page-slug" class="form-label"><?php _e('Cute name Slug', 'palgoals-core'); ?></label>
-                        <input type="text" name="page_slug" id="page-slug" class="form-control" required placeholder="<?php _e('Cute name Slug, preferably in English', 'palgoals-core'); ?>" />
-                        <small class="form-text text-muted"><?php _e('The new link will be like this', 'palgoals-core'); ?> <?= get_site_url() . '/' ?><span class="new_slug">{slug}</span></small>
+                        <label for="page-slug" class="form-label"><?php _e('Cute name Slug', 'palgoals-dashe'); ?></label>
+                        <input type="text" name="page_slug" id="page-slug" class="form-control" required placeholder="<?php _e('Cute name Slug, preferably in English', 'palgoals-dashe'); ?>" />
+                        <small class="form-text text-muted"><?php _e('The new link will be like this', 'palgoals-dashe'); ?> <?= get_site_url() . '/' ?><span class="new_slug">{slug}</span></small>
                     </div>
                     <input type="hidden" id="redirect-url" name="redirect_url" value="<?php echo esc_url(get_site_url()); ?>" />
                 </div>
             </div>
             <div class="modal-footer gap-4">
-                <button id="create-page" class="btn btn-primary ltr:ml-2 trl:mr-2"><?php _e('Add', 'palgoals-core'); ?></button>
-                <button class="btn btn-secondary" data-pc-modal-dismiss="#animateModal"><?php _e('closing', 'palgoals-core'); ?></button>
+                <button id="create-page" class="btn btn-primary ltr:ml-2 trl:mr-2"><?php _e('Add', 'palgoals-dashe'); ?></button>
+                <button class="btn btn-secondary" data-pc-modal-dismiss="#animateModal"><?php _e('closing', 'palgoals-dashe'); ?></button>
             </div>
             </form>
         </div>

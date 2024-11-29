@@ -115,7 +115,7 @@ add_action('wp_ajax_nopriv_palgoals_create_new_page', 'palgoals_create_new_page'
 function palgoals_create_new_page() {
     // تحقق من وجود عنوان الصفحة و slug
     if (!isset($_POST['title']) || !isset($_POST['slug'])) {
-        wp_send_json_error(array('message' => __('Page title or slug is missing.', 'palgoals-core')));
+        wp_send_json_error(array('message' => __('Page title or slug is missing.', 'palgoals-dashe')));
     }
 
     // تنظيف المدخلات
@@ -124,7 +124,7 @@ function palgoals_create_new_page() {
 
     // تحقق إذا كانت الصفحة موجودة بالفعل
     if (get_page_by_path($page_slug)) {
-        wp_send_json_error(array('message' => __('Page with this slug already exists.', 'palgoals-core')));
+        wp_send_json_error(array('message' => __('Page with this slug already exists.', 'palgoals-dashe')));
     }
 
     // إنشاء الصفحة

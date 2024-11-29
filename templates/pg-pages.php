@@ -87,7 +87,7 @@ $query = new WP_Query($args);
                 <?php endwhile;?>
                 <?php else : ?>
                   <tr>
-                    <td colspan="6" class="px-6 py-4 text-center text-gray-600"><?php _e('No pages found.', 'palgoals-core'); ?></td>
+                    <td colspan="6" class="px-6 py-4 text-center text-gray-600"><?php _e('No pages found.', 'palgoals-dashe'); ?></td>
                   </tr>
                   <?php endif;?>
                 </tbody>

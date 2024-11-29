@@ -7,14 +7,14 @@ if (!defined('ABSPATH')) {
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_food_nonce'])) {
     // تحقق من nonce للحماية
     if (!wp_verify_nonce($_POST['update_food_nonce'], 'update_food')) {
-        wp_die(__('Security check failed.', 'palgoals-core'));
+        wp_die(__('Security check failed.', 'palgoals-dashe'));
     }
 
     // جلب بيانات التصنيف
     $category_id = isset($_POST['category_id']) ? intval($_POST['category_id']) : 0;
 
     if (!$category_id) {
-        wp_die(__('No category ID provided.', 'palgoals-core'));
+        wp_die(__('No category ID provided.', 'palgoals-dashe'));
     }
 
     // إعداد البيانات للحفظ
@@ -64,10 +64,10 @@ if ($category_id) {
         $parent_id            = $category->parent;
         $category_image_id    = get_term_meta($category_id, 'category_image', true);
     } else {
-        wp_die(__('Invalid category ID or taxonomy.', 'palgoals-core'));
+        wp_die(__('Invalid category ID or taxonomy.', 'palgoals-dashe'));
     }
 } else {
-    wp_die(__('No category ID provided.', 'palgoals-core'));
+    wp_die(__('No category ID provided.', 'palgoals-dashe'));
 }
 
 // تضمين الهيدر
@@ -95,7 +95,7 @@ include plugin_dir_path(dirname(__DIR__, 3)) . 'templates/partials/header.php';
                     <div class="card-body">
                         <?php if (isset($_GET['updated']) && $_GET['updated'] === 'true') : ?>
                             <div class="alert alert-success" role="alert">
-                                <p><?php _e('Category updated successfully!', 'palgoals-core'); ?></p>
+                                <p><?php _e('Category updated successfully!', 'palgoals-dashe'); ?></p>
                             </div>
                         <?php endif; ?>
 
@@ -123,7 +123,7 @@ include plugin_dir_path(dirname(__DIR__, 3)) . 'templates/partials/header.php';
                                 <!-- Description -->
                                 <div class="col-span-12 md:col-span-6">
                                     <div class="mb-3">
-                                        <label for="category-description" class="form-label"><?php esc_html_e('Description', 'palgoals-core'); ?></label>
+                                        <label for="category-description" class="form-label"><?php esc_html_e('Description', 'palgoals-dashe'); ?></label>
                                         <textarea name="description" id="category-description" class="form-control"><?php echo esc_textarea($category_description); ?></textarea>
                                     </div>
                                 </div>
@@ -133,7 +133,7 @@ include plugin_dir_path(dirname(__DIR__, 3)) . 'templates/partials/header.php';
                                     <div class="mb-3">
                                         <label for="parent-category" class="form-label"><?php esc_html_e('Parent Category', 'palgoals-dash'); ?></label>
                                         <select id="parent-category" name="parent" class="form-control">
-                                            <option value="0"><?php _e('None', 'palgoals-core'); ?></option>
+                                            <option value="0"><?php _e('None', 'palgoals-dashe'); ?></option>
                                             <?php
                                             $categories = get_terms([
                                                 'taxonomy' => 'pg_food_menu_category',
@@ -145,7 +145,7 @@ include plugin_dir_path(dirname(__DIR__, 3)) . 'templates/partials/header.php';
                                                     echo '<option value="' . esc_attr($cat->term_id) . '"' . selected($parent_id, $cat->term_id, false) . '>' . esc_html($cat->name) . '</option>';
                                                 }
                                             } else {
-                                                echo '<option value="">' . esc_html__('No categories found', 'palgoals-core') . '</option>';
+                                                echo '<option value="">' . esc_html__('No categories found', 'palgoals-dashe') . '</option>';
                                             }
                                             ?>
                                         </select>
@@ -155,18 +155,18 @@ include plugin_dir_path(dirname(__DIR__, 3)) . 'templates/partials/header.php';
                                 <!-- Category Image -->
                                 <div class="col-span-12 md:col-span-6">
                                     <div class="mb-3">
-                                        <label><?php _e('Category Image', 'palgoals-core'); ?></label>
+                                        <label><?php _e('Category Image', 'palgoals-dashe'); ?></label>
                                         <div id="food-image-preview" class="mb-2">
                                             <?php
                                             if ($category_image_id) {
                                                 echo wp_get_attachment_image($category_image_id, 'thumbnail', false, ['class' => 'img-thumbnail']);
                                             } else {
-                                                echo '<p>' . __('No image uploaded', 'palgoals-core') . '</p>';
+                                                echo '<p>' . __('No image uploaded', 'palgoals-dashe') . '</p>';
                                             }
                                             ?>
                                         </div>
                                         <button type="button" id="upload-food-image" class="btn btn-secondary">
-                                            <?php _e('Upload Image', 'palgoals-core'); ?>
+                                            <?php _e('Upload Image', 'palgoals-dashe'); ?>
                                         </button>
                                         <input type="hidden" id="category_image" name="image_id" value="<?php echo esc_attr($category_image_id); ?>">
                                     </div>
@@ -174,7 +174,7 @@ include plugin_dir_path(dirname(__DIR__, 3)) . 'templates/partials/header.php';
 
                                 <!-- Submit Button -->
                                 <div class="col-span-12 text-right">
-                                    <button type="submit" class="btn btn-primary"><?php _e('Update Category', 'palgoals-core'); ?></button>
+                                    <button type="submit" class="btn btn-primary"><?php _e('Update Category', 'palgoals-dashe'); ?></button>
                                 </div>
                             </div>
                         </form>

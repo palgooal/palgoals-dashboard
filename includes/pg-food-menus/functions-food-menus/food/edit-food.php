@@ -86,7 +86,7 @@ add_action('wp_enqueue_scripts', 'palgoals_remove_theme_edit_food', 99);
 function palgoals_update_food_handler() {
     // تحقق من nonce للحماية
     if (!isset($_POST['update_food_nonce']) || !wp_verify_nonce($_POST['update_food_nonce'], 'update_food')) {
-        wp_die(__('Security check failed', 'palgoals-core'));
+        wp_die(__('Security check failed', 'palgoals-dashe'));
     }
 
     // جلب معرف الطعام
@@ -115,7 +115,7 @@ function palgoals_update_food_handler() {
         );
         exit;
     } else {
-        wp_die(__('Invalid food ID', 'palgoals-core'));
+        wp_die(__('Invalid food ID', 'palgoals-dashe'));
     }
 }
 add_action('admin_post_update_food', 'palgoals_update_food_handler');

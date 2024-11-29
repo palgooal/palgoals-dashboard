@@ -84,7 +84,7 @@ $categories = get_terms([
                                     <?php endforeach; ?>
                                 <?php else : ?>
                                     <tr>
-                                        <td colspan="7" class="text-center"><?php esc_html_e('No Food Menus Found.', 'palgoals-core'); ?></td>
+                                        <td colspan="7" class="text-center"><?php esc_html_e('No Food Menus Found.', 'palgoals-dashe'); ?></td>
                                     </tr>
                                 <?php endif; ?>
                                 </tbody>

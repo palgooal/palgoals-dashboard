@@ -12,23 +12,23 @@
                 <div class="card-body">
                     <form method="POST" action="">
                         <div class="mb-3">
-                            <label for="food-title" class="form-label"><?php _e('Add Title', 'palgoals-core'); ?></label>
-                            <input type="text" name="food_title" id="food-title" class="form-control" required placeholder="<?php _e('Enter the Food name', 'palgoals-core'); ?>" />
+                            <label for="food-title" class="form-label"><?php _e('Add Title', 'palgoals-dashe'); ?></label>
+                            <input type="text" name="food_title" id="food-title" class="form-control" required placeholder="<?php _e('Enter the Food name', 'palgoals-dashe'); ?>" />
                         </div>
 
                         <div class="mb-3">
-                            <label for="food-description" class="form-label"><?php _e('Food Description', 'palgoals-core'); ?></label>
-                            <textarea type="text" name="food-description" id="food-description" class="form-control" required placeholder="<?php _e('Write a brief description of the food here.', 'palgoals-core'); ?>"></textarea>
+                            <label for="food-description" class="form-label"><?php _e('Food Description', 'palgoals-dashe'); ?></label>
+                            <textarea type="text" name="food-description" id="food-description" class="form-control" required placeholder="<?php _e('Write a brief description of the food here.', 'palgoals-dashe'); ?>"></textarea>
                         </div>
 
                         <div class="grid grid-cols-12 gap-6">
                             <div class="col-span-12 md:col-span-6 mb-4">
-                                <label for="food-Price" class="form-label"><?php _e('Food Price', 'palgoals-core'); ?></label>
-                                <input type="number" name="food_Price" id="food-Price" class="form-control" required placeholder="<?php _e('Add Food Price', 'palgoals-core'); ?>" />
+                                <label for="food-Price" class="form-label"><?php _e('Food Price', 'palgoals-dashe'); ?></label>
+                                <input type="number" name="food_Price" id="food-Price" class="form-control" required placeholder="<?php _e('Add Food Price', 'palgoals-dashe'); ?>" />
                             </div>
 
                             <div class="col-span-12 md:col-span-6 mb-4">
-                                <label for="parent-category" class="form-label"><?php _e('Category', 'palgoals-core'); ?></label>
+                                <label for="parent-category" class="form-label"><?php _e('Category', 'palgoals-dashe'); ?></label>
                                 <select id="parent-category" name="parent" class="form-control">
                                     <option value="0"><?php esc_html_e('None', 'palgoals-dash'); ?></option>
                                     <?php
@@ -49,9 +49,9 @@
                         </div>
 
                         <div class="mb-3">
-                            <label><?php _e('Food Image', 'palgoals-core'); ?></label>
+                            <label><?php _e('Food Image', 'palgoals-dashe'); ?></label>
                             <div id="Food-image-preview" class="mb-2"></div>
-                            <button type="button" id="upload-food-image" class="btn btn-secondary"><?php _e('Upload Image', 'palgoals-core'); ?></button>
+                            <button type="button" id="upload-food-image" class="btn btn-secondary"><?php _e('Upload Image', 'palgoals-dashe'); ?></button>
                             <input type="hidden" id="food_image" name="image_id">
                         </div>
 
@@ -61,8 +61,8 @@
             </div>
 
             <div class="modal-footer gap-4">
-                <button id="create-page" class="btn btn-primary ltr:ml-2 trl:mr-2"><?php _e('Add', 'palgoals-core'); ?></button>
-                <button class="btn btn-secondary" data-pc-modal-dismiss="#animateModal"><?php _e('Closing', 'palgoals-core'); ?></button>
+                <button id="create-page" class="btn btn-primary ltr:ml-2 trl:mr-2"><?php _e('Add', 'palgoals-dashe'); ?></button>
+                <button class="btn btn-secondary" data-pc-modal-dismiss="#animateModal"><?php _e('Closing', 'palgoals-dashe'); ?></button>
             </div>
         </div>
     </div>

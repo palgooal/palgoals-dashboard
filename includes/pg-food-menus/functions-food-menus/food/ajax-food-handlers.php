@@ -16,7 +16,7 @@ function handle_add_food_item() {
 
     // التحقق من المدخلات
     if (empty($food_title) || empty($food_description) || $food_price <= 0) {
-        wp_send_json_error(['message' => __('Please fill all required fields.', 'palgoals-core')]);
+        wp_send_json_error(['message' => __('Please fill all required fields.', 'palgoals-dashe')]);
     }
 
     // إنشاء المنشور الجديد
@@ -28,7 +28,7 @@ function handle_add_food_item() {
     ]);
 
     if (is_wp_error($new_post)) {
-        wp_send_json_error(['message' => __('Failed to add the item.', 'palgoals-core')]);
+        wp_send_json_error(['message' => __('Failed to add the item.', 'palgoals-dashe')]);
     }
 
     // إضافة التصنيفات والصورة
@@ -38,7 +38,7 @@ function handle_add_food_item() {
     // إضافة السعر كـ Meta Data
     update_post_meta($new_post, '_pg_food_menu_price', $food_price);
 
-    wp_send_json_success(['message' => __('Item added successfully.', 'palgoals-core'), 'post_id' => $new_post]);
+    wp_send_json_success(['message' => __('Item added successfully.', 'palgoals-dashe'), 'post_id' => $new_post]);
 }
 add_action('wp_ajax_add_food_item', 'handle_add_food_item');
 add_action('wp_ajax_nopriv_add_food_item', 'handle_add_food_item');
@@ -57,7 +57,7 @@ function update_food_item() {
 
     // التحقق من المدخلات
     if (!$post_id || empty($food_title) || empty($food_description) || $food_price <= 0) {
-        wp_send_json_error(['message' => __('Please fill all required fields.', 'palgoals-core')]);
+        wp_send_json_error(['message' => __('Please fill all required fields.', 'palgoals-dashe')]);
     }
 
     // تعديل المنشور
@@ -68,7 +68,7 @@ function update_food_item() {
     ], true);
 
     if (is_wp_error($updated_post)) {
-        wp_send_json_error(['message' => __('Failed to save changes.', 'palgoals-core')]);
+        wp_send_json_error(['message' => __('Failed to save changes.', 'palgoals-dashe')]);
     }
 
     // تعديل التصنيفات والصورة
@@ -78,7 +78,7 @@ function update_food_item() {
     // تعديل السعر
     update_post_meta($post_id, '_pg_food_menu_price', $food_price);
 
-    wp_send_json_success(['message' => __('Changes saved successfully.', 'palgoals-core')]);
+    wp_send_json_success(['message' => __('Changes saved successfully.', 'palgoals-dashe')]);
 }
 add_action('wp_ajax_update_food_item', 'update_food_item');
 
@@ -87,12 +87,12 @@ function get_food_menu_item() {
     $post_id = intval($_POST['post_id']);
 
     // التحقق من صحة معرف العنصر
-    if (!$post_id) wp_send_json_error(['message' => __('Invalid post ID.', 'palgoals-core')]);
+    if (!$post_id) wp_send_json_error(['message' => __('Invalid post ID.', 'palgoals-dashe')]);
 
     $post = get_post($post_id);
 
     if (!$post || $post->post_type !== 'pg_food_menu') {
-        wp_send_json_error(['message' => __('Post not found.', 'palgoals-core')]);
+        wp_send_json_error(['message' => __('Post not found.', 'palgoals-dashe')]);
     }
 
     $categories = wp_get_post_terms($post_id, 'pg_food_menu_category');
@@ -115,7 +115,7 @@ function update_food_menu_item() {
 
     // استلام البيانات
     $post_id = intval($data['post_id']);
-    if (!$post_id) wp_send_json_error(['message' => __('Invalid post ID.', 'palgoals-core')]);
+    if (!$post_id) wp_send_json_error(['message' => __('Invalid post ID.', 'palgoals-dashe')]);
 
     // تعديل المنشور
     wp_update_post([
@@ -129,19 +129,19 @@ function update_food_menu_item() {
     wp_set_post_terms($post_id, intval($data['parent']), 'pg_food_menu_category');
     set_post_thumbnail($post_id, intval($data['food_image']));
 
-    wp_send_json_success(['message' => __('Food item updated successfully.', 'palgoals-core')]);
+    wp_send_json_success(['message' => __('Food item updated successfully.', 'palgoals-dashe')]);
 }
 add_action('wp_ajax_update_food_menu_item', 'update_food_menu_item');
 
 // تحديث بيانات العنصر عبر نموذج الإدارة
 add_action('admin_post_update_food', function () {
     if (!isset($_POST['update_food_nonce']) || !wp_verify_nonce($_POST['update_food_nonce'], 'update_food')) {
-        wp_die(__('Invalid nonce', 'palgoals-core'));
+        wp_die(__('Invalid nonce', 'palgoals-dashe'));
     }
 
     $food_id = isset($_POST['food_id']) ? intval($_POST['food_id']) : 0;
     if (!$food_id || get_post_type($food_id) !== 'pg_food_menu') {
-        wp_die(__('Invalid food ID', 'palgoals-core'));
+        wp_die(__('Invalid food ID', 'palgoals-dashe'));
     }
 
     // تحديث البيانات النصية
@@ -176,7 +176,7 @@ add_action('admin_post_update_food', function () {
 function palgoals_delete_food_item() {
     // تحقق من صلاحيات المستخدم
     if (!current_user_can('delete_posts')) {
-        wp_send_json_error(['message' => __('You do not have permission to delete this item.', 'palgoals-core')]);
+        wp_send_json_error(['message' => __('You do not have permission to delete this item.', 'palgoals-dashe')]);
     }
 
     // تحقق من الـ nonce للحماية
@@ -187,16 +187,16 @@ function palgoals_delete_food_item() {
 
     // تحقق من صحة المعرف ونوع المنشور
     if (!$post_id || get_post_type($post_id) !== 'pg_food_menu') {
-        wp_send_json_error(['message' => __('Invalid item ID.', 'palgoals-core')]);
+        wp_send_json_error(['message' => __('Invalid item ID.', 'palgoals-dashe')]);
     }
 
     // حذف العنصر
     $deleted = wp_delete_post($post_id, true); // `true` يحذف بشكل دائم
 
     if ($deleted) {
-        wp_send_json_success(['message' => __('Item deleted successfully.', 'palgoals-core')]);
+        wp_send_json_success(['message' => __('Item deleted successfully.', 'palgoals-dashe')]);
     } else {
-        wp_send_json_error(['message' => __('Failed to delete the item.', 'palgoals-core')]);
+        wp_send_json_error(['message' => __('Failed to delete the item.', 'palgoals-dashe')]);
     }
 }
 add_action('wp_ajax_delete_food_item', 'palgoals_delete_food_item');
