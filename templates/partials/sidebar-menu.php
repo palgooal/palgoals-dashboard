@@ -183,7 +183,7 @@ $avatar_url = get_avatar_url($current_user->ID, ['size' => 45]);
           <i class="ti ti-user"></i>
           <span>My Account</span>
         </a>
-        <a href="#!" class="dropdown-item">
+        <a href="<?php echo get_home_url() . '/dashboard/pg-settings/';?>" class="dropdown-item">
           <i class="ti ti-settings"></i>
           <span>Settings</span>
         </a>
@@ -342,7 +342,7 @@ $avatar_url = get_avatar_url($current_user->ID, ['size' => 45]);
             </div>
             <hr class="border-secondary-500/10 my-4" />
             <p class="text-span mb-3">Manage</p>
-            <a href="#" class="dropdown-item">
+            <a href="<?php echo get_home_url() . '/dashboard/pg-settings/';?>" class="dropdown-item">
               <span>
                 <svg class="pc-icon text-muted me-2 inline-block">
                   <use xlink:href="#custom-setting-outline"></use>

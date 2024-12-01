@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Palgoals Dashboard\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-01 21:45+0000\n"
-"PO-Revision-Date: 2024-12-01 22:01+0000\n"
+"PO-Revision-Date: 2024-12-01 22:00+0000\n"
 "Last-Translator: \n"
 "Language-Team: Arabic\n"
 "Language: ar\n"
@@ -169,11 +169,11 @@ msgstr "حازم اليحيى"
 
 #: templates/partials/sidebar-menu.php:61
 msgid "Home"
-msgstr "الرئيسية"
+msgstr "المنزل"
 
 #: templates/partials/sidebar-menu.php:65
 msgid "Home Dashboard"
-msgstr "لوحة التحكم الرئسية"
+msgstr "المنزل لوحة التحكم"
 
 #. URI of the plugin
 #. Author URI of the plugin

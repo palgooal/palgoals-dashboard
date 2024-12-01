@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Palgoals Dashboard\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-01 21:45+0000\n"
-"PO-Revision-Date: 2024-12-01 22:01+0000\n"
+"PO-Revision-Date: 2024-12-01 21:47+0000\n"
 "Last-Translator: \n"
 "Language-Team: Arabic\n"
 "Language: ar\n"
@@ -18,162 +18,162 @@ msgstr ""
 
 #: templates/pg-pages.php:57
 msgid "Action"
-msgstr "العمل"
+msgstr ""
 
 #: includes/pg-food-menus/templates/food/food-menu.php:59
 #: includes/pg-food-menus/templates/taxonomies/category-menus.php:52
 msgid "Actions"
-msgstr "الإجراءات"
+msgstr ""
 
 #: includes/pg-food-menus/templates/taxonomies/category-menus.php:38
 msgid "Add Categories"
-msgstr "إضافة فئات"
+msgstr ""
 
 #: includes/pg-food-menus/functions-food-menus/taxonomies/taxonomies-food-menu-category.php:49
 #: includes/pg-food-menus/templates/taxonomies/add-categories.php:54
 msgid "Add Category"
-msgstr "إضافة فئة"
+msgstr ""
 
 #: includes/pg-food-menus/templates/food/food-menu.php:43
 msgid "Add Food"
-msgstr "إضافة الغذاء"
+msgstr ""
 
 #: templates/media/pg-media.php:30
 msgid "Add Media"
-msgstr "رفع ملفات"
+msgstr ""
 
 #: templates/modal/modal-menu/add-categories.php:3
 #: templates/modal/modal-menu/edit-categories.php:3
 #: includes/pg-food-menus/functions-food-menus/taxonomies/taxonomies-food-menu-category.php:6
 #: includes/pg-food-menus/templates/taxonomies/add-categories.php:3
 msgid "Add New Category"
-msgstr "إضافة فئة جديدة"
+msgstr ""
 
 #: includes/pg-food-menus/templates/food/add-food.php:5
 msgid "Add New Food"
-msgstr "إضافة غذاء جديد"
+msgstr ""
 
 #: includes/pg-food-menus/functions-food-menus/post-types-food-menu.php:13
 msgid "Add New Food Menu"
-msgstr "إضافة جديدة قائمة الطعام"
+msgstr ""
 
 #: templates/pg-pages.php:42
 msgid "Add Pages"
-msgstr "إضافة صفحات"
+msgstr ""
 
 #: includes/pg-food-menus/templates/taxonomies/category-menus.php:36
 msgid "All Categories"
-msgstr "جميع الفئات"
+msgstr ""
 
 #: includes/pg-food-menus/templates/food/food-menu.php:41
 msgid "All Food"
-msgstr "جميع المواد الغذائية"
+msgstr ""
 
 #: templates/media/pg-media.php:26
 msgid "All Media"
-msgstr "جميع الوسائط"
+msgstr ""
 
 #: templates/pg-pages.php:39
 msgid "All Pages"
-msgstr "كل الصفحات"
+msgstr ""
 
 #: includes/pg-food-menus/functions-food-menus/taxonomies/taxonomies-food-assets.php:36
 msgid "An error occurred. Please try again."
-msgstr "حدث خطأ. يرجى المحاولة مرة أخرى."
+msgstr ""
 
 #: includes/pg-food-menus/functions-food-menus/taxonomies/taxonomies-food-assets.php:35
 msgid "Are you sure you want to delete this category?"
-msgstr "هل أنت متأكد من أنك تريد حذف هذه الفئة ؟"
+msgstr ""
 
 #: includes/pg-food-menus/functions-food-menus/taxonomies/taxonomies-food-menu-category.php:5
 #: includes/pg-food-menus/templates/food/food-menu.php:57
 msgid "Categories"
-msgstr "فئات"
+msgstr ""
 
 #: includes/pg-food-menus/templates/taxonomies/add-categories.php:79
 msgid "Category Added Successfully:"
-msgstr "الفئة وأضاف بنجاح:"
+msgstr ""
 
 #: includes/pg-food-menus/functions-food-menus/taxonomies/taxonomies-ajax-food-menu-category.php:31
 msgid "Category deleted successfully."
-msgstr "الفئة حذف بنجاح."
+msgstr ""
 
 #: includes/pg-food-menus/functions-food-menus/taxonomies/taxonomies-food-menu-category.php:21
 #: includes/pg-food-menus/functions-food-menus/taxonomies/taxonomies-food-menu-category.php:43
 msgid "Category Image"
-msgstr "فئة الصورة"
+msgstr ""
 
 #: includes/pg-food-menus/templates/taxonomies/category-menus.php:50
 msgid "Description"
-msgstr "الوصف"
+msgstr ""
 
 #: templates/partials/sidebar-menu.php:76
 msgid "Design"
-msgstr "تصميم"
+msgstr ""
 
 #: includes/pg-food-menus/templates/taxonomies/edit-categories.php:83
 #: includes/pg-food-menus/templates/taxonomies/edit-categories.php:93
 msgid "Edit Category"
-msgstr "تحرير الفئة"
+msgstr ""
 
 #: includes/pg-food-menus/templates/food/edit-food.php:80
 #: includes/pg-food-menus/templates/food/edit-food.php:91
 msgid "Edit Food"
-msgstr "تحرير الغذاء"
+msgstr ""
 
 #: includes/pg-food-menus/functions-food-menus/post-types-food-menu.php:14
 msgid "Edit Food Menu"
-msgstr "تحرير قائمة الطعام"
+msgstr ""
 
 #: templates/pg-settings.php:34 templates/pg-settings.php:45
 msgid "Edit Settings"
-msgstr "تعديل الإعدادات"
+msgstr ""
 
 #: templates/login.php:56
 msgid "Email Address"
-msgstr "عنوان البريد الإلكتروني"
+msgstr ""
 
 #: includes/pg-food-menus/templates/taxonomies/add-categories.php:81
 msgid "Error:"
-msgstr "خطأ:"
+msgstr ""
 
 #: templates/partials/sidebar-menu.php:95
 msgid "Food Categories"
-msgstr "الفئات الغذائية"
+msgstr ""
 
 #: includes/pg-food-menus/functions-food-menus/post-types-food-menu.php:12
 #: includes/pg-food-menus/templates/food/food-menu.php:30
 msgid "Food Menu"
-msgstr "قائمة الطعام"
+msgstr ""
 
 #: templates/partials/sidebar-menu.php:90
 #: templates/partials/sidebar-menu.php:94
 msgid "Food menu"
-msgstr "قائمة الطعام"
+msgstr ""
 
 #: includes/pg-food-menus/templates/taxonomies/category-menus.php:24
 msgid "Food Menu Categories"
-msgstr "الغذائية القائمة فئات"
+msgstr ""
 
 #: includes/pg-food-menus/functions-food-menus/meta-boxes-food-menu-meta.php:3
 msgid "Food Menu Price"
-msgstr "قائمة الطعام السعر"
+msgstr ""
 
 #: includes/pg-food-menus/functions-food-menus/post-types-food-menu.php:11
 msgid "Food Menus"
-msgstr "قوائم الطعام"
+msgstr ""
 
 #. Author of the plugin
 msgid "hazem alyahya"
-msgstr "حازم اليحيى"
+msgstr ""
 
 #: templates/partials/sidebar-menu.php:61
 msgid "Home"
-msgstr "الرئيسية"
+msgstr ""
 
 #: templates/partials/sidebar-menu.php:65
 msgid "Home Dashboard"
-msgstr "لوحة التحكم الرئسية"
+msgstr ""
 
 #. URI of the plugin
 #. Author URI of the plugin
@@ -183,195 +183,195 @@ msgstr ""
 #: includes/pg-food-menus/templates/food/food-menu.php:54
 #: includes/pg-food-menus/templates/taxonomies/category-menus.php:48
 msgid "Image"
-msgstr "صورة"
+msgstr ""
 
 #: includes/pg-food-menus/functions-food-menus/taxonomies/taxonomies-ajax-food-menu-category.php:18
 msgid "Invalid category ID."
-msgstr "صالح فئة معرف."
+msgstr ""
 
 #: includes/functions/pages/pages-ajax.php:33
 msgid "Invalid request"
-msgstr "طلب غير صالح"
+msgstr ""
 
 #: templates/media/pg-media.php:95
 msgid "Load More"
-msgstr "تحميل المزيد من"
+msgstr ""
 
 #: templates/login.php:66
 msgid "Login"
-msgstr "تسجيل الدخول"
+msgstr ""
 
 #: templates/login.php:47
 msgid "Login with your email"
-msgstr "تسجيل الدخول مع البريد الإلكتروني الخاص بك"
+msgstr ""
 
 #: templates/media/pg-media.php:16 templates/partials/sidebar-menu.php:105
 msgid "Media"
-msgstr "مكتبة الوسائط"
+msgstr ""
 
 #: includes/pg-food-menus/templates/taxonomies/add-categories.php:13
 #: includes/pg-food-menus/templates/taxonomies/category-menus.php:49
 #: includes/pg-food-menus/templates/taxonomies/edit-categories.php:110
 msgid "Name"
-msgstr "اسم"
+msgstr ""
 
 #: templates/pg-pages.php:113
 #: includes/pg-food-menus/templates/food/food-menu.php:163
 msgid "Next"
-msgstr "القادم"
+msgstr ""
 
 #: includes/pg-food-menus/templates/food/food-menu.php:104
 msgid "No Categories"
-msgstr "أي فئات"
+msgstr ""
 
 #: templates/modal/modal-menu/add-categories.php:37
 #: templates/modal/modal-menu/edit-categories.php:37
 #: includes/pg-food-menus/templates/food/add-food.php:44
 #: includes/pg-food-menus/templates/taxonomies/add-categories.php:36
 msgid "No Categories Found"
-msgstr "أي فئات وجدت"
+msgstr ""
 
 #: includes/pg-food-menus/templates/food/food-menu.php:129
 msgid "No Food Menus Found."
-msgstr "لا قوائم الطعام وجدت."
+msgstr ""
 
 #: includes/pg-food-menus/templates/food/food-menu.php:73
 msgid "No Image"
-msgstr "لا صورة"
+msgstr ""
 
 #: includes/media.php:152 templates/media/pg-media.php:89
 msgid "No media found."
-msgstr "لا يوجد وسائط مرفوعة."
+msgstr ""
 
 #: includes/pg-food-menus/templates/taxonomies/add-categories.php:84
 msgid "No Name Provided"
-msgstr "لا اسم المقدمة"
+msgstr ""
 
 #: templates/modal/modal-menu/add-categories.php:25
 #: templates/modal/modal-menu/edit-categories.php:25
 #: includes/pg-food-menus/templates/food/add-food.php:33
 #: includes/pg-food-menus/templates/taxonomies/add-categories.php:25
 msgid "None"
-msgstr "لا شيء"
+msgstr ""
 
 #: templates/partials/sidebar-menu.php:80
 msgid "Pages"
-msgstr "صفحات"
+msgstr ""
 
 #: templates/pg-pages.php:28
 msgid "Pages List"
-msgstr "صفحات قائمة"
+msgstr ""
 
 #. Name of the plugin
 msgid "Palgoals Dashboard"
-msgstr "Palgoals لوحة التحكم"
+msgstr ""
 
 #. Description of the plugin
 msgid "Palgoals Dashboard plugin with multi-language support"
-msgstr "Palgoals لوحة المساعد مع دعم متعدد اللغات"
+msgstr ""
 
 #: includes/pg-food-menus/templates/taxonomies/add-categories.php:23
 #: includes/pg-food-menus/templates/taxonomies/edit-categories.php:134
 msgid "Parent Category"
-msgstr "الفئة الأم"
+msgstr ""
 
 #: templates/login.php:61
 msgid "Password"
-msgstr "كلمة المرور"
+msgstr ""
 
 #: includes/pg-food-menus/templates/taxonomies/category-menus.php:51
 msgid "Posts Count"
-msgstr "وظائف العد"
+msgstr ""
 
 #: templates/pg-pages.php:107
 #: includes/pg-food-menus/templates/food/food-menu.php:145
 msgid "Previous"
-msgstr "السابقة"
+msgstr ""
 
 #: includes/pg-food-menus/templates/food/food-menu.php:56
 msgid "Price"
-msgstr "السعر"
+msgstr ""
 
 #: includes/pg-food-menus/functions-food-menus/meta-boxes-food-menu-meta.php:9
 msgid "Price:"
-msgstr "السعر:"
+msgstr ""
 
 #: templates/pg-pages.php:55
 msgid "Publish Date"
-msgstr "تاريخ النشر"
+msgstr ""
 
 #: includes/pg-food-menus/functions-food-menus/taxonomies/taxonomies-food-menu-category.php:31
 #: includes/pg-food-menus/functions-food-menus/taxonomies/taxonomies-food-menu-category.php:47
 msgid "Remove Image"
-msgstr "إزالة صورة"
+msgstr ""
 
 #: templates/pg-settings.php:100
 msgid "Save Settings"
-msgstr "حفظ الإعدادات"
+msgstr ""
 
 #: templates/media/pg-media.php:28
 msgid "Search Media..."
-msgstr "البحث الإعلام..."
+msgstr ""
 
 #: templates/pg-settings.php:119
 msgid "Select Site Icon"
-msgstr "حدد موقع رمز"
+msgstr ""
 
 #: templates/partials/sidebar-menu.php:66
 msgid "Show website"
-msgstr "عرض الموقع"
+msgstr ""
 
 #: templates/media/pg-media.php:98
 msgid "Showing %d of %d media items"
-msgstr "تظهر %d %d البنود وسائل الإعلام"
+msgstr ""
 
 #: templates/pg-settings.php:70
 msgid "Site Icon"
-msgstr "الموقع أيقونة"
+msgstr ""
 
 #: templates/pg-settings.php:82
 msgid "Site Language"
-msgstr "موقع اللغة"
+msgstr ""
 
 #: templates/pg-settings.php:54
 msgid "Site Title"
-msgstr "عنوان الموقع"
+msgstr ""
 
 #: includes/pg-food-menus/templates/taxonomies/add-categories.php:18
 #: includes/pg-food-menus/templates/taxonomies/edit-categories.php:118
 msgid "Slug"
-msgstr "سبيكة"
+msgstr ""
 
 #: templates/pg-pages.php:56
 #: includes/pg-food-menus/templates/food/food-menu.php:58
 msgid "Status"
-msgstr "حالة"
+msgstr ""
 
 #: templates/pg-settings.php:62
 msgid "Tagline"
-msgstr "الشعار"
+msgstr ""
 
 #: includes/pg-food-menus/templates/food/food-menu.php:55
 msgid "Title"
-msgstr "العنوان"
+msgstr ""
 
 #: templates/pg-pages.php:54
 msgid "Title Pages"
-msgstr "صفحات العنوان"
+msgstr ""
 
 #: includes/pg-food-menus/functions-food-menus/taxonomies/taxonomies-food-menu-category.php:30
 #: includes/pg-food-menus/functions-food-menus/taxonomies/taxonomies-food-menu-category.php:46
 msgid "Upload Image"
-msgstr "تحميل الصور"
+msgstr ""
 
 #: templates/pg-settings.php:74
 msgid "Upload Site Icon"
-msgstr "موقع تحميل رمز"
+msgstr ""
 
 #: templates/pg-settings.php:121
 msgid "Use this icon"
-msgstr "استخدام هذا الرمز"
+msgstr ""
 
 #: includes/pg-food-menus/functions-food-menus/taxonomies/taxonomies-ajax-food-menu-category.php:13
 msgid "You do not have permission to delete categories."
-msgstr "ليس لديك الإذن لحذف الفئات."
+msgstr ""

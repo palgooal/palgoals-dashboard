@@ -3,7 +3,7 @@ msgstr ""
 "Project-Id-Version: Palgoals Dashboard\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2024-12-01 21:45+0000\n"
-"PO-Revision-Date: 2024-12-01 22:01+0000\n"
+"PO-Revision-Date: 2024-12-01 21:58+0000\n"
 "Last-Translator: \n"
 "Language-Team: Arabic\n"
 "Language: ar\n"
@@ -40,7 +40,7 @@ msgstr "إضافة الغذاء"
 
 #: templates/media/pg-media.php:30
 msgid "Add Media"
-msgstr "رفع ملفات"
+msgstr "إضافة وسائل الإعلام"
 
 #: templates/modal/modal-menu/add-categories.php:3
 #: templates/modal/modal-menu/edit-categories.php:3
@@ -71,7 +71,7 @@ msgstr "جميع المواد الغذائية"
 
 #: templates/media/pg-media.php:26
 msgid "All Media"
-msgstr "جميع الوسائط"
+msgstr "جميع وسائل الإعلام"
 
 #: templates/pg-pages.php:39
 msgid "All Pages"
@@ -169,11 +169,11 @@ msgstr "حازم اليحيى"
 
 #: templates/partials/sidebar-menu.php:61
 msgid "Home"
-msgstr "الرئيسية"
+msgstr "المنزل"
 
 #: templates/partials/sidebar-menu.php:65
 msgid "Home Dashboard"
-msgstr "لوحة التحكم الرئسية"
+msgstr "المنزل لوحة التحكم"
 
 #. URI of the plugin
 #. Author URI of the plugin
@@ -241,7 +241,7 @@ msgstr "لا صورة"
 
 #: includes/media.php:152 templates/media/pg-media.php:89
 msgid "No media found."
-msgstr "لا يوجد وسائط مرفوعة."
+msgstr "لا وسائل الإعلام وجدت."
 
 #: includes/pg-food-menus/templates/taxonomies/add-categories.php:84
 msgid "No Name Provided"

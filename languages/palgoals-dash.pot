@@ -1,9 +1,9 @@
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: Palgoals Dashboaed\n"
+"Project-Id-Version: Palgoals Dashboard\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-24 21:38+0000\n"
+"POT-Creation-Date: 2024-12-01 21:45+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: \n"
@@ -13,22 +13,165 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Loco https://localise.biz/\n"
-"X-Loco-Version: 2.6.11; wp-6.6.2\n"
+"X-Loco-Version: 2.6.14; wp-6.7.1\n"
 "X-Domain: palgoals-dash"
 
-#: templates/partials/sidebar-menu.php:95
+#: templates/pg-pages.php:57
+msgid "Action"
+msgstr ""
+
+#: includes/pg-food-menus/templates/food/food-menu.php:59
+#: includes/pg-food-menus/templates/taxonomies/category-menus.php:52
+msgid "Actions"
+msgstr ""
+
+#: includes/pg-food-menus/templates/taxonomies/category-menus.php:38
+msgid "Add Categories"
+msgstr ""
+
+#: includes/pg-food-menus/functions-food-menus/taxonomies/taxonomies-food-menu-category.php:49
+#: includes/pg-food-menus/templates/taxonomies/add-categories.php:54
+msgid "Add Category"
+msgstr ""
+
+#: includes/pg-food-menus/templates/food/food-menu.php:43
+msgid "Add Food"
+msgstr ""
+
+#: templates/media/pg-media.php:30
+msgid "Add Media"
+msgstr ""
+
+#: templates/modal/modal-menu/add-categories.php:3
+#: templates/modal/modal-menu/edit-categories.php:3
+#: includes/pg-food-menus/functions-food-menus/taxonomies/taxonomies-food-menu-category.php:6
+#: includes/pg-food-menus/templates/taxonomies/add-categories.php:3
+msgid "Add New Category"
+msgstr ""
+
+#: includes/pg-food-menus/templates/food/add-food.php:5
+msgid "Add New Food"
+msgstr ""
+
+#: includes/pg-food-menus/functions-food-menus/post-types-food-menu.php:13
+msgid "Add New Food Menu"
+msgstr ""
+
+#: templates/pg-pages.php:42
+msgid "Add Pages"
+msgstr ""
+
+#: includes/pg-food-menus/templates/taxonomies/category-menus.php:36
+msgid "All Categories"
+msgstr ""
+
+#: includes/pg-food-menus/templates/food/food-menu.php:41
+msgid "All Food"
+msgstr ""
+
+#: templates/media/pg-media.php:26
+msgid "All Media"
+msgstr ""
+
+#: templates/pg-pages.php:39
+msgid "All Pages"
+msgstr ""
+
+#: includes/pg-food-menus/functions-food-menus/taxonomies/taxonomies-food-assets.php:36
+msgid "An error occurred. Please try again."
+msgstr ""
+
+#: includes/pg-food-menus/functions-food-menus/taxonomies/taxonomies-food-assets.php:35
+msgid "Are you sure you want to delete this category?"
+msgstr ""
+
+#: includes/pg-food-menus/functions-food-menus/taxonomies/taxonomies-food-menu-category.php:5
+#: includes/pg-food-menus/templates/food/food-menu.php:57
+msgid "Categories"
+msgstr ""
+
+#: includes/pg-food-menus/templates/taxonomies/add-categories.php:79
+msgid "Category Added Successfully:"
+msgstr ""
+
+#: includes/pg-food-menus/functions-food-menus/taxonomies/taxonomies-ajax-food-menu-category.php:31
+msgid "Category deleted successfully."
+msgstr ""
+
+#: includes/pg-food-menus/functions-food-menus/taxonomies/taxonomies-food-menu-category.php:21
+#: includes/pg-food-menus/functions-food-menus/taxonomies/taxonomies-food-menu-category.php:43
+msgid "Category Image"
+msgstr ""
+
+#: includes/pg-food-menus/templates/taxonomies/category-menus.php:50
+msgid "Description"
+msgstr ""
+
+#: templates/partials/sidebar-menu.php:76
 msgid "Design"
+msgstr ""
+
+#: includes/pg-food-menus/templates/taxonomies/edit-categories.php:83
+#: includes/pg-food-menus/templates/taxonomies/edit-categories.php:93
+msgid "Edit Category"
+msgstr ""
+
+#: includes/pg-food-menus/templates/food/edit-food.php:80
+#: includes/pg-food-menus/templates/food/edit-food.php:91
+msgid "Edit Food"
+msgstr ""
+
+#: includes/pg-food-menus/functions-food-menus/post-types-food-menu.php:14
+msgid "Edit Food Menu"
+msgstr ""
+
+#: templates/pg-settings.php:34 templates/pg-settings.php:45
+msgid "Edit Settings"
+msgstr ""
+
+#: templates/login.php:56
+msgid "Email Address"
+msgstr ""
+
+#: includes/pg-food-menus/templates/taxonomies/add-categories.php:81
+msgid "Error:"
+msgstr ""
+
+#: templates/partials/sidebar-menu.php:95
+msgid "Food Categories"
+msgstr ""
+
+#: includes/pg-food-menus/functions-food-menus/post-types-food-menu.php:12
+#: includes/pg-food-menus/templates/food/food-menu.php:30
+msgid "Food Menu"
+msgstr ""
+
+#: templates/partials/sidebar-menu.php:90
+#: templates/partials/sidebar-menu.php:94
+msgid "Food menu"
+msgstr ""
+
+#: includes/pg-food-menus/templates/taxonomies/category-menus.php:24
+msgid "Food Menu Categories"
+msgstr ""
+
+#: includes/pg-food-menus/functions-food-menus/meta-boxes-food-menu-meta.php:3
+msgid "Food Menu Price"
+msgstr ""
+
+#: includes/pg-food-menus/functions-food-menus/post-types-food-menu.php:11
+msgid "Food Menus"
 msgstr ""
 
 #. Author of the plugin
 msgid "hazem alyahya"
 msgstr ""
 
-#: templates/partials/sidebar-menu.php:80
+#: templates/partials/sidebar-menu.php:61
 msgid "Home"
 msgstr ""
 
-#: templates/partials/sidebar-menu.php:84
+#: templates/partials/sidebar-menu.php:65
 msgid "Home Dashboard"
 msgstr ""
 
@@ -37,18 +180,198 @@ msgstr ""
 msgid "https://palgoals.com"
 msgstr ""
 
-#: templates/partials/sidebar-menu.php:99
+#: includes/pg-food-menus/templates/food/food-menu.php:54
+#: includes/pg-food-menus/templates/taxonomies/category-menus.php:48
+msgid "Image"
+msgstr ""
+
+#: includes/pg-food-menus/functions-food-menus/taxonomies/taxonomies-ajax-food-menu-category.php:18
+msgid "Invalid category ID."
+msgstr ""
+
+#: includes/functions/pages/pages-ajax.php:33
+msgid "Invalid request"
+msgstr ""
+
+#: templates/media/pg-media.php:95
+msgid "Load More"
+msgstr ""
+
+#: templates/login.php:66
+msgid "Login"
+msgstr ""
+
+#: templates/login.php:47
+msgid "Login with your email"
+msgstr ""
+
+#: templates/media/pg-media.php:16 templates/partials/sidebar-menu.php:105
+msgid "Media"
+msgstr ""
+
+#: includes/pg-food-menus/templates/taxonomies/add-categories.php:13
+#: includes/pg-food-menus/templates/taxonomies/category-menus.php:49
+#: includes/pg-food-menus/templates/taxonomies/edit-categories.php:110
+msgid "Name"
+msgstr ""
+
+#: templates/pg-pages.php:113
+#: includes/pg-food-menus/templates/food/food-menu.php:163
+msgid "Next"
+msgstr ""
+
+#: includes/pg-food-menus/templates/food/food-menu.php:104
+msgid "No Categories"
+msgstr ""
+
+#: templates/modal/modal-menu/add-categories.php:37
+#: templates/modal/modal-menu/edit-categories.php:37
+#: includes/pg-food-menus/templates/food/add-food.php:44
+#: includes/pg-food-menus/templates/taxonomies/add-categories.php:36
+msgid "No Categories Found"
+msgstr ""
+
+#: includes/pg-food-menus/templates/food/food-menu.php:129
+msgid "No Food Menus Found."
+msgstr ""
+
+#: includes/pg-food-menus/templates/food/food-menu.php:73
+msgid "No Image"
+msgstr ""
+
+#: includes/media.php:152 templates/media/pg-media.php:89
+msgid "No media found."
+msgstr ""
+
+#: includes/pg-food-menus/templates/taxonomies/add-categories.php:84
+msgid "No Name Provided"
+msgstr ""
+
+#: templates/modal/modal-menu/add-categories.php:25
+#: templates/modal/modal-menu/edit-categories.php:25
+#: includes/pg-food-menus/templates/food/add-food.php:33
+#: includes/pg-food-menus/templates/taxonomies/add-categories.php:25
+msgid "None"
+msgstr ""
+
+#: templates/partials/sidebar-menu.php:80
 msgid "Pages"
 msgstr ""
 
+#: templates/pg-pages.php:28
+msgid "Pages List"
+msgstr ""
+
 #. Name of the plugin
-msgid "Palgoals Dashboaed"
+msgid "Palgoals Dashboard"
 msgstr ""
 
 #. Description of the plugin
 msgid "Palgoals Dashboard plugin with multi-language support"
 msgstr ""
 
-#: templates/partials/sidebar-menu.php:85
+#: includes/pg-food-menus/templates/taxonomies/add-categories.php:23
+#: includes/pg-food-menus/templates/taxonomies/edit-categories.php:134
+msgid "Parent Category"
+msgstr ""
+
+#: templates/login.php:61
+msgid "Password"
+msgstr ""
+
+#: includes/pg-food-menus/templates/taxonomies/category-menus.php:51
+msgid "Posts Count"
+msgstr ""
+
+#: templates/pg-pages.php:107
+#: includes/pg-food-menus/templates/food/food-menu.php:145
+msgid "Previous"
+msgstr ""
+
+#: includes/pg-food-menus/templates/food/food-menu.php:56
+msgid "Price"
+msgstr ""
+
+#: includes/pg-food-menus/functions-food-menus/meta-boxes-food-menu-meta.php:9
+msgid "Price:"
+msgstr ""
+
+#: templates/pg-pages.php:55
+msgid "Publish Date"
+msgstr ""
+
+#: includes/pg-food-menus/functions-food-menus/taxonomies/taxonomies-food-menu-category.php:31
+#: includes/pg-food-menus/functions-food-menus/taxonomies/taxonomies-food-menu-category.php:47
+msgid "Remove Image"
+msgstr ""
+
+#: templates/pg-settings.php:100
+msgid "Save Settings"
+msgstr ""
+
+#: templates/media/pg-media.php:28
+msgid "Search Media..."
+msgstr ""
+
+#: templates/pg-settings.php:119
+msgid "Select Site Icon"
+msgstr ""
+
+#: templates/partials/sidebar-menu.php:66
 msgid "Show website"
+msgstr ""
+
+#: templates/media/pg-media.php:98
+msgid "Showing %d of %d media items"
+msgstr ""
+
+#: templates/pg-settings.php:70
+msgid "Site Icon"
+msgstr ""
+
+#: templates/pg-settings.php:82
+msgid "Site Language"
+msgstr ""
+
+#: templates/pg-settings.php:54
+msgid "Site Title"
+msgstr ""
+
+#: includes/pg-food-menus/templates/taxonomies/add-categories.php:18
+#: includes/pg-food-menus/templates/taxonomies/edit-categories.php:118
+msgid "Slug"
+msgstr ""
+
+#: templates/pg-pages.php:56
+#: includes/pg-food-menus/templates/food/food-menu.php:58
+msgid "Status"
+msgstr ""
+
+#: templates/pg-settings.php:62
+msgid "Tagline"
+msgstr ""
+
+#: includes/pg-food-menus/templates/food/food-menu.php:55
+msgid "Title"
+msgstr ""
+
+#: templates/pg-pages.php:54
+msgid "Title Pages"
+msgstr ""
+
+#: includes/pg-food-menus/functions-food-menus/taxonomies/taxonomies-food-menu-category.php:30
+#: includes/pg-food-menus/functions-food-menus/taxonomies/taxonomies-food-menu-category.php:46
+msgid "Upload Image"
+msgstr ""
+
+#: templates/pg-settings.php:74
+msgid "Upload Site Icon"
+msgstr ""
+
+#: templates/pg-settings.php:121
+msgid "Use this icon"
+msgstr ""
+
+#: includes/pg-food-menus/functions-food-menus/taxonomies/taxonomies-ajax-food-menu-category.php:13
+msgid "You do not have permission to delete categories."
 msgstr ""
