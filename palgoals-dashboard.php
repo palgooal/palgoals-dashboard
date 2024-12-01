@@ -25,6 +25,7 @@ require_once plugin_dir_path(__FILE__) . 'includes/admin/pages-dashboard.php';
 require_once plugin_dir_path(__FILE__) . 'includes/pg-food-menus/food-menus.php';
 require_once plugin_dir_path(__FILE__) . 'includes/media.php';
 require_once plugin_dir_path(__FILE__) . 'includes/enqueue-scripts.php';
+require_once plugin_dir_path(__FILE__) . 'includes/admin/pg-Settings.php';
 
 
 add_filter('show_admin_bar', '__return_false');
