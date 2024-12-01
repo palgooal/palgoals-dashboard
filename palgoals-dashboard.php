@@ -52,3 +52,37 @@ add_action('admin_init', function() {
     }
 });
 
+
+function palgoals_dashboard_plugin_update_check() {
+    // عنوان URL لخادم التحديث (في حال كنت تستخدم GitHub)
+    $update_url = 'https://api.github.com/repos/palgooal/palgoals-dashboard/releases/latest';
+
+    // إرسال طلب GET للتحقق من آخر إصدار
+    $response = wp_remote_get($update_url);
+    
+    if (is_wp_error($response)) {
+        return;
+    }
+
+    $data = json_decode(wp_remote_retrieve_body($response), true);
+    
+    if (empty($data)) {
+        return;
+    }
+
+    // تحديد إصدار الإضافة الحالية
+    $current_version = get_plugin_data( __FILE__ )['Version'];
+
+    // تحديد الإصدار الجديد
+    $latest_version = $data['tag_name'];
+
+    if (version_compare($current_version, $latest_version, '<')) {
+        // هناك تحديث جديد متاح
+        $update_message = "هناك تحديث جديد للإضافة! إصدار جديد: $latest_version";
+        // يمكنك هنا إرسال إشعار إلى المستخدم أو تحديث واجهة المستخدم
+        add_action('admin_notices', function() use ($update_message) {
+            echo '<div class="notice notice-warning is-dismissible"><p>' . $update_message . '</p></div>';
+        });
+    }
+}
+add_action('admin_init', 'palgoals_dashboard_plugin_update_check');

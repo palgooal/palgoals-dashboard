@@ -78,18 +78,10 @@ include plugin_dir_path(__DIR__) . 'templates/partials/header.php';
 
                                 <!-- Site Language -->
                                 <div class="col-span-12 md:col-span-6">
-    <div class="mb-3">
-        <label for="site_language" class="form-label"><?php _e('Site Language', 'palgoals-dash'); ?></label>
-        <select id="site_language" name="site_language" class="form-control">
-            <option value="ar" <?php selected(get_option('WPLANG'), 'ar'); ?>><?php _e('Arabic', 'palgoals-dash'); ?></option>
-            <option value="en_US" <?php selected(get_option('WPLANG'), 'en_US'); ?>><?php _e('English (United States)', 'palgoals-dash'); ?></option>
-        </select>
-    </div>
-</div>
-
-
-
-
+                                    <div class="mb-3">
+                                        <label for="site_language" class="form-label"><?php _e('Site Language', 'palgoals-dash'); ?></label>
+                                    </div>
+                                </div>
                                 <!-- Submit Button -->
                                 <div class="col-span-12 text-right">
                                     <button type="button" id="save-settings" class="btn btn-primary"><?php _e('Save Settings', 'palgoals-dash'); ?></button>
