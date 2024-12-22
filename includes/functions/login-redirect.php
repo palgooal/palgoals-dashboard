@@ -22,16 +22,15 @@ function restrict_wp_admin_access() {
     if (is_admin() && !defined('DOING_AJAX')) {
         $current_user = wp_get_current_user();
 
-        // السماح للمستخدم 'support' أو لمن لديهم صلاحيات كاملة
-        if ($current_user->user_login === 'support' || current_user_can('manage_options')) {
+        if ($current_user->user_login === 'support') {
             return;
         }
+
 
         // السماح للمستخدمين بالوصول إلى رابط تحرير Elementor
         if (isset($_GET['action']) && $_GET['action'] === 'elementor') {
             return;
         }
-
         // إعادة توجيه المستخدمين الآخرين إلى /dashboard/ أو الصفحة الرئيسية
         wp_redirect(site_url('/dashboard/'));
         exit;
