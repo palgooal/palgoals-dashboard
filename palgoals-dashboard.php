@@ -3,7 +3,7 @@
 Plugin Name: Palgoals Dashboard
 Plugin URI: https://palgoals.com
 Description: Palgoals Dashboard plugin with multi-language support
-Version: v1.0.0
+Version: v1.1.0
 Author: hazem alyahya
 Author URI: https://palgoals.com
 License: GPLv2 or later

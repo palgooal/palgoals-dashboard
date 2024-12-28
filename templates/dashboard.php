@@ -62,12 +62,11 @@ include plugin_dir_path(__DIR__) . 'templates/partials/header.php';
                 <div class="grid grid-cols-12 gap-6">
                   <div class="col-span-12 sm:col-span-6">
                     <div class="p-4">
-                      <h2 class="text-white">Explore Redesigned Able Pro</h2>
+                      <h2 class="text-white"><?php _e('Manage restaurant effortlessly!', 'palgoals-dash'); ?></h2>
                       <p class="text-white my-5"
-                        >The Brand new User Interface with power of Bootstrap Components. Explore the Endless possibilities with Able
-                        Pro.</p
+                        ><?php _e('Enjoy managing and customizing your restaurants electronic menu with ease and professionalism!', 'palgoals-dash'); ?></p
                       >
-                      <a href="https://1.envato.market/zNkqj6" class="btn text-white border-white">Exclusive on Themeforest</a>
+                    
                     </div>
                   </div>
                   <div class="col-span-12 sm:col-span-6 text-center">
