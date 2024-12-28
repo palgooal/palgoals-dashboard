@@ -131,4 +131,23 @@ function palgoals_save_pg_settings() {
 }
 add_action('wp_ajax_save_pg_settings', 'palgoals_save_pg_settings');
 
+// معالجة رفع الشعار وحفظه
+function update_site_identity_logo() {
+    // التحقق من الأمان والصلاحيات
+    check_ajax_referer('site_logo_nonce', 'security');
+
+    if (!current_user_can('edit_theme_options')) {
+        wp_send_json_error(['message' => 'Unauthorized access.']);
+    }
+
+    $attachment_id = absint($_POST['attachment_id']);
+    if ($attachment_id) {
+        set_theme_mod('custom_logo', $attachment_id);
+        wp_send_json_success(['message' => 'Logo updated successfully.']);
+    } else {
+        wp_send_json_error(['message' => 'Invalid attachment ID.']);
+    }
+}
+add_action('wp_ajax_update_site_identity_logo', 'update_site_identity_logo');
+
 
