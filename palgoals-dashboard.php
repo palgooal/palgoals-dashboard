@@ -3,7 +3,7 @@
 Plugin Name: Palgoals Dashboard
 Plugin URI: https://palgoals.com
 Description: Palgoals Dashboard plugin with multi-language support
-Version: v1.1.0
+Version: v1.2.0
 Author: hazem alyahya
 Author URI: https://palgoals.com
 License: GPLv2 or later
@@ -53,36 +53,60 @@ add_action('admin_init', function() {
 });
 
 
-function palgoals_dashboard_plugin_update_check() {
-    // عنوان URL لخادم التحديث (في حال كنت تستخدم GitHub)
+function palgoals_dashboard_plugin_update_check($transient) {
+    // إعداد البيانات
+    $plugin_slug = 'palgoals-dashboard/palgoals-dashboard.php'; // مسار الإضافة الرئيسي
     $update_url = 'https://api.github.com/repos/palgooal/palgoals-dashboard/releases/latest';
-
+    
     // إرسال طلب GET للتحقق من آخر إصدار
     $response = wp_remote_get($update_url);
-    
+
     if (is_wp_error($response)) {
-        return;
+        return $transient;
     }
 
     $data = json_decode(wp_remote_retrieve_body($response), true);
-    
-    if (empty($data)) {
-        return;
-    }
 
-    // تحديد إصدار الإضافة الحالية
-    $current_version = get_plugin_data( __FILE__ )['Version'];
+    if (empty($data) || empty($data['tag_name'])) {
+        return $transient;
+    }
 
     // تحديد الإصدار الجديد
-    $latest_version = $data['tag_name'] ?? null;
+    $current_version = get_plugin_data(__FILE__)['Version'];
+    $latest_version = $data['tag_name'];
 
     if (version_compare($current_version, $latest_version, '<')) {
-        // هناك تحديث جديد متاح
-        $update_message = "هناك تحديث جديد للإضافة! إصدار جديد: $latest_version";
-        // يمكنك هنا إرسال إشعار إلى المستخدم أو تحديث واجهة المستخدم
-        add_action('admin_notices', function() use ($update_message) {
-            echo '<div class="notice notice-warning is-dismissible"><p>' . $update_message . '</p></div>';
-        });
+        // إعداد تفاصيل التحديث
+        $transient->response[$plugin_slug] = (object) [
+            'slug'        => $plugin_slug,
+            'plugin'      => $plugin_slug,
+            'new_version' => $latest_version,
+            'package'     => $data['assets'][0]['browser_download_url'] ?? null, // رابط الملف القابل للتنزيل
+            'tested'      => '6.7.1', // إصدار ووردبريس الذي تم اختباره معه
+            'requires'    => '6.0', // إصدار ووردبريس المطلوب
+        ];
+    }
+
+    return $transient;
+}
+add_filter('site_transient_update_plugins', 'palgoals_dashboard_plugin_update_check');
+
+// تمكين التحديث التلقائي للإضافة
+function palgoals_enable_auto_update($update, $item) {
+    // تحقق من اسم الإضافة
+    if (isset($item->slug) && $item->slug === 'palgoals-dashboard') {
+        return true; // تمكين التحديث التلقائي
+    }
+
+    return $update; // القيمة الافتراضية
+}
+add_filter('auto_update_plugin', 'palgoals_enable_auto_update', 10, 2);
+
+// إضافة معلومات إضافية في صفحة الإضافات
+function palgoals_dashboard_plugin_update_info($plugin_data, $response) {
+    if (!empty($response) && !empty($response->new_version)) {
+        echo '<p>آخر إصدار متاح: ' . esc_html($response->new_version) . '</p>';
     }
 }
-add_action('admin_init', 'palgoals_dashboard_plugin_update_check');
+add_action('after_plugin_row_palgoals-dashboard/palgoals-dashboard.php', 'palgoals_dashboard_plugin_update_info', 10, 2);
+
