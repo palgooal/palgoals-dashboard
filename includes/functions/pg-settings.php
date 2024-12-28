@@ -150,4 +150,3 @@ function update_site_identity_logo() {
 }
 add_action('wp_ajax_update_site_identity_logo', 'update_site_identity_logo');
 
-
