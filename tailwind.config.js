@@ -8,6 +8,7 @@ module.exports = {
       // تخصيص خصائص Tailwind مثل الألوان والخطوط
       colors: {
         dashboardBg: '#f5f5f5', // لون خلفية مخصص للوحة التحكم
+        pgprimary: '#240b36', // لون أزرق مخصص
       },
       spacing: {
         '128': '32rem',

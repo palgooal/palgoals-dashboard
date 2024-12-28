@@ -4,6 +4,49 @@ if (!defined('ABSPATH')) {
     exit; // Exit if accessed directly
 }
 
+// احصائيات الزوار
+if (function_exists('do_shortcode')) {
+  // قراءة الفترة من البارامتر
+  $period = isset($_GET['period']) ? $_GET['period'] : 'monthly';
+  $online_visitors = do_shortcode('[wpstatistics stat=usersonline]');
+  $published_posts = wp_count_posts('pg_food_menu')->publish;
+
+  // إعداد الفترات الزمنية
+  switch ($period) {
+  case 'daily':
+    $current_visitors = do_shortcode('[wpstatistics stat=visitors time=today]');
+    $previous_visitors = do_shortcode('[wpstatistics stat=visitors time=yesterday]');
+    // ترجمة
+    $label = __('Todays Visitors', 'palgoals-dash');
+    break;
+
+case 'weekly':
+    $current_visitors = do_shortcode('[wpstatistics stat=visitors time=week]');
+    $previous_visitors = do_shortcode('[wpstatistics stat=visitors time=lastweek]');
+    $label = __('Weeks Visitors', 'palgoals-dash');
+    break;
+
+case 'monthly':
+default:
+    $current_visitors = do_shortcode('[wpstatistics stat=visitors time=month]');
+    $previous_visitors = do_shortcode('[wpstatistics stat=visitors time=lastmonth]');
+    $label = __('Months Visitors', 'palgoals-dash');
+    break;
+}
+
+   // التحقق من وجود القيم وحساب النسبة
+  if ($previous_visitors > 0) {
+    $percentage_change = (($current_visitors - $previous_visitors) / $previous_visitors) * 100;
+    $icon = $percentage_change > 0 ? 'ti ti-arrow-up-right' : 'ti ti-arrow-down-right';
+    $color_class = $percentage_change > 0 ? 'text-success-500' : 'text-danger-500';
+}else{
+    $percentage_change = 0;
+    $icon = 'ti ti-arrow-up-right';
+    $color_class = 'text-success-500';
+}
+}
+
+
 // تضمين الهيدر
 include plugin_dir_path(__DIR__) . 'templates/partials/header.php';
 ?>
@@ -44,21 +87,21 @@ include plugin_dir_path(__DIR__) . 'templates/partials/header.php';
                         <path
                           opacity="0.4"
                           d="M13 9H7"
-                          stroke="#4680FF"
+                          stroke="#2ca87f"
                           stroke-width="1.5"
                           stroke-linecap="round"
                           stroke-linejoin="round"
                         />
                         <path
                           d="M22.0002 10.9702V13.0302C22.0002 13.5802 21.5602 14.0302 21.0002 14.0502H19.0402C17.9602 14.0502 16.9702 13.2602 16.8802 12.1802C16.8202 11.5502 17.0602 10.9602 17.4802 10.5502C17.8502 10.1702 18.3602 9.9502 18.9202 9.9502H21.0002C21.5602 9.9702 22.0002 10.4202 22.0002 10.9702Z"
-                          stroke="#4680FF"
+                          stroke="#2ca87f"
                           stroke-width="1.5"
                           stroke-linecap="round"
                           stroke-linejoin="round"
                         />
                         <path
                           d="M17.48 10.55C17.06 10.96 16.82 11.55 16.88 12.18C16.97 13.26 17.96 14.05 19.04 14.05H21V15.5C21 18.5 19 20.5 16 20.5H7C4 20.5 2 18.5 2 15.5V8.5C2 5.78 3.64 3.88 6.19 3.56C6.45 3.52 6.72 3.5 7 3.5H16C16.26 3.5 16.51 3.50999 16.75 3.54999C19.33 3.84999 21 5.76 21 8.5V9.95001H18.92C18.36 9.95001 17.85 10.17 17.48 10.55Z"
-                          stroke="#4680FF"
+                          stroke="#2ca87f"
                           stroke-width="1.5"
                           stroke-linecap="round"
                           stroke-linejoin="round"
@@ -67,25 +110,10 @@ include plugin_dir_path(__DIR__) . 'templates/partials/header.php';
                     </div>
                   </div>
                   <div class="grow ltr:ml-3 rtl:mr-3">
-                    <h6 class="mb-0">All Earnings</h6>
+                    <h6 class="mb-0"><?php _e('Online Visitors', 'palgoals-dash'); ?></h6>
                   </div>
                   <div class="shrink-0">
-                    <div class="dropdown">
-                      <a
-                        class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary dropdown-toggle arrow-none"
-                        href="#"
-                        data-pc-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        <i class="ti ti-dots-vertical text-lg leading-none"></i>
-                      </a>
-                      <div class="dropdown-menu dropdown-menu-end">
-                        <a class="dropdown-item" href="#">Today</a>
-                        <a class="dropdown-item" href="#">Weekly</a>
-                        <a class="dropdown-item" href="#">Monthly</a>
-                      </div>
-                    </div>
+                   
                   </div>
                 </div>
                 <div class="bg-theme-bodybg dark:bg-themedark-bodybg p-3 mt-4 rounded-lg">
@@ -94,8 +122,8 @@ include plugin_dir_path(__DIR__) . 'templates/partials/header.php';
                       <div id="all-earnings-graph"></div>
                     </div>
                     <div class="col-span-5">
-                      <h5 class="mb-1">$30200</h5>
-                      <p class="text-primary-500 mb-0"><i class="ti ti-arrow-up-right"></i> 30.6%</p>
+                     
+                      <h5 class="mb-1"><?php echo $online_visitors;?></h5>
                     </div>
                   </div>
                 </div>
@@ -148,7 +176,7 @@ include plugin_dir_path(__DIR__) . 'templates/partials/header.php';
                     </div>
                   </div>
                   <div class="grow ltr:ml-3 rtl:mr-3">
-                    <h6 class="mb-0">Page Views</h6>
+                    <h6 class="mb-0"><?php echo $label; ?></h6>
                   </div>
                   <div class="shrink-0">
                     <div class="dropdown">
@@ -162,9 +190,9 @@ include plugin_dir_path(__DIR__) . 'templates/partials/header.php';
                         <i class="ti ti-dots-vertical text-lg leading-none"></i>
                       </a>
                       <div class="dropdown-menu dropdown-menu-end">
-                        <a class="dropdown-item" href="#">Today</a>
-                        <a class="dropdown-item" href="#">Weekly</a>
-                        <a class="dropdown-item" href="#">Monthly</a>
+                        <a class="dropdown-item" href="?period=daily"><?php _e('Today', 'palgoals-dash');?></a>
+                        <a class="dropdown-item" href="?period=weekly"><?php _e('Weekly', 'palgoals-dash');?></a>
+                        <a class="dropdown-item" href="?period=monthly"><?php _e('Monthly', 'palgoals-dash');?></a>
                       </div>
                     </div>
                   </div>
@@ -175,9 +203,12 @@ include plugin_dir_path(__DIR__) . 'templates/partials/header.php';
                       <div id="page-views-graph"></div>
                     </div>
                     <div class="col-span-5">
-                      <h5 class="mb-1">290+</h5>
-                      <p class="text-warning-500 mb-0"><i class="ti ti-arrow-up-right"></i> 30.6%</p>
-                    </div>
+                    
+                  
+                         <h5 class="mb-1"><?php echo $current_visitors; ?></h5>
+                         <p class="<?php echo $color_class; ?> mb-0"><i class="<?php echo $icon; ?>"></i><?php echo round($percentage_change, 2); ?>%</p>
+                     </div>
+                    
                   </div>
                 </div>
               </div>
@@ -275,25 +306,9 @@ include plugin_dir_path(__DIR__) . 'templates/partials/header.php';
                     </div>
                   </div>
                   <div class="grow ltr:ml-3 rtl:mr-3">
-                    <h6 class="mb-0">Total Task</h6>
+                    <h6 class="mb-0"><?php _e('Published Food', 'palgoals-dash') ?></h6>
                   </div>
                   <div class="shrink-0">
-                    <div class="dropdown">
-                      <a
-                        class="w-8 h-8 rounded-xl inline-flex items-center justify-center btn-link-secondary dropdown-toggle arrow-none"
-                        href="#"
-                        data-pc-toggle="dropdown"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                      >
-                        <i class="ti ti-dots-vertical text-lg leading-none"></i>
-                      </a>
-                      <div class="dropdown-menu dropdown-menu-end">
-                        <a class="dropdown-item" href="#">Today</a>
-                        <a class="dropdown-item" href="#">Weekly</a>
-                        <a class="dropdown-item" href="#">Monthly</a>
-                      </div>
-                    </div>
                   </div>
                 </div>
                 <div class="bg-theme-bodybg dark:bg-themedark-bodybg p-3 mt-4 rounded-lg">
@@ -302,8 +317,7 @@ include plugin_dir_path(__DIR__) . 'templates/partials/header.php';
                       <div id="total-task-graph"></div>
                     </div>
                     <div class="col-span-5">
-                      <h5 class="mb-1">14568</h5>
-                      <p class="text-success-500 mb-0"><i class="ti ti-arrow-up-right"></i> 30.6%</p>
+                      <h5 class="mb-1"><?php echo $published_posts; ?></h5>
                     </div>
                   </div>
                 </div>

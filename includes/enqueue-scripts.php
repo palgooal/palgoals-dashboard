@@ -15,7 +15,6 @@ function palgoals_enqueue_shared_assets() {
     wp_enqueue_style('palgoals-fontawesome', $plugin_url . 'fonts/fontawesome.css', [], null);
     wp_enqueue_style('palgoals-material', $plugin_url . 'fonts/material.css', [], null);
     wp_enqueue_style('palgoals-dashboard-style', $plugin_url . 'css/style.css', [], null);
-    //wp_enqueue_style('palgoals-tailwind', $plugin_url . 'dist/output.css', [], null);
 
     // تحميل ملفات JavaScript
     wp_enqueue_script('palgoals-simplebar', $plugin_url . 'js/plugins/simplebar.min.js', ['jquery'], null, true);
