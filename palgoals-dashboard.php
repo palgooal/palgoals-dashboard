@@ -59,7 +59,12 @@ function palgoals_dashboard_plugin_update_check($transient) {
     $update_url = 'https://api.github.com/repos/palgooal/palgoals-dashboard/releases/latest';
     
     // إرسال طلب GET للتحقق من آخر إصدار
-    $response = wp_remote_get($update_url);
+    $response = wp_remote_get($update_url, [
+        'timeout' => 15, // تحديد وقت المهلة
+        'headers' => [
+            'User-Agent' => 'Palgoals-Plugin/1.0',
+        ]
+    ]);
 
     if (is_wp_error($response)) {
         return $transient;
